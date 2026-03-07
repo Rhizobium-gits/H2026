@@ -93,53 +93,61 @@
     onScroll();
   });
 
-  // ---- Bento cell tap splash ----
-  document.querySelectorAll('.bento-item').forEach((card) => {
-    // Desktop hover tilt
-    if (window.innerWidth > 768) {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        card.style.transform = 'perspective(600px) rotateY(' + (x * 6) + 'deg) rotateX(' + (-y * 6) + 'deg) scale(1.02)';
-      });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-      });
+  // ---- Organic tap interaction — all living elements ----
+  const organicTargets = document.querySelectorAll(
+    '.bento-item, .glass-card, .feat-card, .quote-box, .paper-box, .member'
+  );
+
+  organicTargets.forEach((el) => {
+    // Ensure position for ripple
+    if (getComputedStyle(el).position === 'static') {
+      el.style.position = 'relative';
     }
 
-    // Tap / click — viscous splash
-    function cellSplash(e) {
-      const rect = card.getBoundingClientRect();
+    // Desktop hover tilt for bento items
+    if (window.innerWidth > 768 && el.classList.contains('bento-item')) {
+      el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        el.style.transform = 'perspective(600px) rotateY(' + (x * 6) + 'deg) rotateX(' + (-y * 6) + 'deg) scale(1.02)';
+      });
+      el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+    }
+
+    // Tap / click — viscous organic splash
+    function organicSplash(e) {
+      const rect = el.getBoundingClientRect();
       const touch = e.touches ? e.touches[0] : e;
       const x = touch.clientX - rect.left;
       const y = touch.clientY - rect.top;
-      const size = Math.max(rect.width, rect.height) * 1.6;
+      const size = Math.max(rect.width, rect.height) * 1.8;
 
-      // Create ripple element
+      // Create ripple
       const ripple = document.createElement('div');
-      ripple.className = 'cell-ripple';
+      ripple.className = el.classList.contains('bento-item') ? 'cell-ripple' : 'organic-ripple';
       ripple.style.width = size + 'px';
       ripple.style.height = size + 'px';
       ripple.style.left = (x - size / 2) + 'px';
       ripple.style.top = (y - size / 2) + 'px';
-      card.appendChild(ripple);
+      el.appendChild(ripple);
 
-      // Trigger jiggle + bounce
-      card.classList.remove('cell-tapped');
-      void card.offsetWidth; // force reflow
-      card.classList.add('cell-tapped');
+      // Trigger animation
+      const tapClass = el.classList.contains('bento-item') ? 'cell-tapped' : 'organic-tapped';
+      el.classList.remove(tapClass);
+      void el.offsetWidth;
+      el.classList.add(tapClass);
 
       // Cleanup
       setTimeout(() => {
         ripple.remove();
-        card.classList.remove('cell-tapped');
-      }, 850);
+        el.classList.remove(tapClass);
+      }, 950);
     }
 
-    card.addEventListener('click', cellSplash);
-    card.addEventListener('touchstart', function(e) {
-      cellSplash(e);
+    el.addEventListener('click', organicSplash);
+    el.addEventListener('touchstart', function(e) {
+      organicSplash(e);
     }, { passive: true });
   });
 
