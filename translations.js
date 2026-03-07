@@ -990,10 +990,10 @@
     try { localStorage.setItem('h-village-lang', lang); } catch (e) {}
   }
 
-  // Build & inject language switcher
+  // Build & inject language switcher into existing #langSwitcher
   function initLangSwitcher() {
-    var wrapper = document.createElement('div');
-    wrapper.className = 'lang-switcher';
+    var wrapper = document.getElementById('langSwitcher');
+    if (!wrapper) return;
 
     var btn = document.createElement('button');
     btn.className = 'lang-btn';
@@ -1011,7 +1011,6 @@
       item.addEventListener('click', function () {
         applyLang(code);
         menu.classList.remove('open');
-        // Update active states
         menu.querySelectorAll('.lang-option').forEach(function (o) {
           o.classList.toggle('active', o.getAttribute('data-lang') === code);
         });
@@ -1031,13 +1030,6 @@
     wrapper.appendChild(btn);
     wrapper.appendChild(menu);
 
-    // Insert before the nav toggle button
-    var navInner = document.querySelector('.nav-inner');
-    var navToggle = document.getElementById('navToggle');
-    if (navInner && navToggle) {
-      navInner.insertBefore(wrapper, navToggle);
-    }
-
     // Restore saved language
     var saved;
     try { saved = localStorage.getItem('h-village-lang'); } catch (e) {}
@@ -1047,7 +1039,6 @@
         o.classList.toggle('active', o.getAttribute('data-lang') === saved);
       });
     } else {
-      // Mark Japanese as active by default
       menu.querySelector('[data-lang="ja"]').classList.add('active');
     }
   }
