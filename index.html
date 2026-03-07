@@ -421,42 +421,35 @@
   </div>
 
   <script src="script.js"></script>
-  <script src="translations.js"></script>
+  <script src="translations.js?v=20260307" onerror="document.title='[ERR] translations.js failed to load'"></script>
   <script>
-  // Self-contained language switcher — no external dependencies
+  // Verify translations loaded
+  if(typeof translations==='undefined'){document.title='[ERR] translations not defined';}
+
+  // Self-contained language switcher
   (function(){
     var btn = document.getElementById('langBtn');
     var menu = document.getElementById('langMenu');
     if(!btn||!menu) return;
 
-    function switchLang(code){
-      // Use global applyLang from translations.js
-      if(typeof applyLang === 'function'){
-        applyLang(code);
-      } else if(typeof translations === 'object' && translations[code]){
-        // Fallback: apply translations directly
-        var dict = translations[code];
-        document.querySelectorAll('[data-i18n]').forEach(function(el){
-          var key = el.getAttribute('data-i18n');
-          if(dict[key] != null) el.innerHTML = dict[key];
-        });
-        document.documentElement.lang = code;
-        document.documentElement.dir = code === 'ar' ? 'rtl' : 'ltr';
-        try{localStorage.setItem('h-village-lang',code);}catch(e){}
+    function doApply(code){
+      if(typeof translations==='undefined') return;
+      var dict = translations[code];
+      if(!dict) return;
+      var els = document.querySelectorAll('[data-i18n]');
+      for(var i=0;i<els.length;i++){
+        var key = els[i].getAttribute('data-i18n');
+        if(dict[key]!=null) els[i].innerHTML = dict[key];
       }
-      // Update button label
+      document.documentElement.lang = code;
+      document.documentElement.dir = (code==='ar') ? 'rtl' : 'ltr';
       var label = document.getElementById('langLabel');
-      var names = (typeof langNames==='object') ? langNames : {};
-      if(label) label.textContent = names[code] || code;
-      // Update active state
-      menu.querySelectorAll('.lang-option').forEach(function(o){
-        o.classList.toggle('active', o.getAttribute('data-lang')===code);
-      });
-      menu.classList.remove('open');
+      if(label && typeof langNames!=='undefined') label.textContent = langNames[code]||code;
+      try{localStorage.setItem('h-village-lang',code);}catch(e){}
     }
 
     // Toggle menu
-    btn.addEventListener('click', function(e){
+    btn.onclick = function(e){
       e.preventDefault();
       e.stopPropagation();
       var r = btn.getBoundingClientRect();
@@ -464,16 +457,24 @@
       menu.style.right = (window.innerWidth - r.right) + 'px';
       menu.style.left = 'auto';
       menu.classList.toggle('open');
-    });
+    };
 
-    // Option clicks — both addEventListener and onclick for maximum reliability
-    menu.querySelectorAll('.lang-option').forEach(function(opt){
-      opt.onclick = function(e){
-        e.stopPropagation();
-        switchLang(this.getAttribute('data-lang'));
-        return false;
-      };
-    });
+    // Option clicks
+    var opts = menu.getElementsByClassName('lang-option');
+    for(var i=0;i<opts.length;i++){
+      opts[i].onclick = (function(opt){
+        return function(e){
+          e.preventDefault();
+          e.stopPropagation();
+          var code = opt.getAttribute('data-lang');
+          doApply(code);
+          menu.classList.remove('open');
+          for(var j=0;j<opts.length;j++){
+            opts[j].classList.toggle('active', opts[j].getAttribute('data-lang')===code);
+          }
+        };
+      })(opts[i]);
+    }
 
     // Close on outside click
     document.addEventListener('click', function(e){
@@ -485,8 +486,11 @@
     // Restore saved language
     var saved;
     try{saved=localStorage.getItem('h-village-lang');}catch(e){}
-    if(saved && typeof translations==='object' && translations[saved]){
-      switchLang(saved);
+    if(saved && typeof translations!=='undefined' && translations[saved]){
+      doApply(saved);
+      for(var j=0;j<opts.length;j++){
+        opts[j].classList.toggle('active', opts[j].getAttribute('data-lang')===saved);
+      }
     } else {
       var ja=menu.querySelector('[data-lang="ja"]');
       if(ja) ja.classList.add('active');
