@@ -406,10 +406,16 @@
   <script>
   /* ===== Language Switcher ===== */
   (function () {
-    if (typeof translations === 'undefined' || typeof langNames === 'undefined') return;
+    var T = (typeof translations !== 'undefined') ? translations : {};
+    var LN = (typeof langNames !== 'undefined') ? langNames : {
+      ja:'\u65e5\u672c\u8a9e',en:'English','zh-CN':'\u7b80\u4f53\u4e2d\u6587',
+      'zh-TW':'\u7e41\u9ad4\u4e2d\u6587',ko:'\ud55c\uad6d\uc5b4',th:'\u0e44\u0e17\u0e22',
+      my:'\u1019\u103c\u1014\u103a\u1019\u102c\u1005\u102c',ar:'\u0627\u0644\u0639\u0631\u0628\u064a\u0629',
+      vi:'Ti\u1ebfng Vi\u1ec7t',de:'Deutsch',fr:'Fran\u00e7ais'
+    };
 
     function applyLang(lang) {
-      var dict = translations[lang];
+      var dict = T[lang];
       if (!dict) return;
       var els = document.querySelectorAll('[data-i18n]');
       for (var i = 0; i < els.length; i++) {
@@ -419,7 +425,7 @@
       document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
       document.documentElement.lang = lang;
       var label = document.getElementById('langLabel');
-      if (label) label.textContent = langNames[lang] || lang;
+      if (label) label.textContent = LN[lang] || lang;
       try { localStorage.setItem('h-village-lang', lang); } catch (e) {}
     }
 
@@ -442,7 +448,7 @@
         item.className = 'lang-option';
         item.setAttribute('type', 'button');
         item.setAttribute('data-lang', code);
-        item.textContent = langNames[code] || code;
+        item.textContent = LN[code] || code;
         item.addEventListener('click', function () {
           applyLang(code);
           menu.classList.remove('open');
@@ -479,7 +485,7 @@
 
     var saved;
     try { saved = localStorage.getItem('h-village-lang'); } catch (e) {}
-    if (saved && translations[saved]) {
+    if (saved && T[saved]) {
       applyLang(saved);
       var all = menu.querySelectorAll('.lang-option');
       for (var j = 0; j < all.length; j++) {
