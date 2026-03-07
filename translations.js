@@ -1,9 +1,6 @@
 // ============================================
 // H Village Research — i18n Translations
 // ============================================
-(function () {
-'use strict';
-
 var translations = {
   ja: {
     // Nav
@@ -981,69 +978,47 @@ function applyLang(lang) {
   try { localStorage.setItem('h-village-lang', lang); } catch (e) {}
 }
 
-function initLangSwitcher() {
+function toggleLangMenu(btnId) {
   var menu = document.getElementById('langMenu');
-  var btn = document.getElementById('langBtn');
-  var mobileBtn = document.getElementById('langBtnMobile');
+  var btn = document.getElementById(btnId || 'langBtn');
   if (!menu || !btn) return;
+  var r = btn.getBoundingClientRect();
+  menu.style.top = (r.bottom + 8) + 'px';
+  menu.style.right = (window.innerWidth - r.right) + 'px';
+  menu.style.left = 'auto';
+  menu.classList.toggle('open');
+}
 
-  // Language option clicks
-  var options = menu.querySelectorAll('.lang-option');
-  for (var i = 0; i < options.length; i++) {
-    (function (opt) {
-      opt.addEventListener('click', function () {
-        var lang = opt.getAttribute('data-lang');
-        applyLang(lang);
-        menu.classList.remove('open');
-        for (var j = 0; j < options.length; j++) {
-          options[j].classList.toggle('active', options[j].getAttribute('data-lang') === lang);
-        }
-      });
-    })(options[i]);
-  }
-
-  function openMenuNear(anchor) {
-    var r = anchor.getBoundingClientRect();
-    menu.style.position = 'fixed';
-    menu.style.top = (r.bottom + 8) + 'px';
-    menu.style.right = (window.innerWidth - r.right) + 'px';
-    menu.style.left = 'auto';
-    menu.classList.toggle('open');
-  }
-
-  // Toggle menu (desktop)
-  btn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    openMenuNear(btn);
-  });
-
-  // Mobile button also toggles same menu
-  if (mobileBtn) {
-    mobileBtn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      openMenuNear(mobileBtn);
-    });
-  }
-
-  // Close on outside click
-  document.addEventListener('click', function () {
+function switchLang(lang) {
+  applyLang(lang);
+  var menu = document.getElementById('langMenu');
+  if (menu) {
     menu.classList.remove('open');
-  });
-
-  // Restore saved language
-  var saved;
-  try { saved = localStorage.getItem('h-village-lang'); } catch (e) {}
-  if (saved && translations[saved]) {
-    applyLang(saved);
-    for (var k = 0; k < options.length; k++) {
-      options[k].classList.toggle('active', options[k].getAttribute('data-lang') === saved);
+    var opts = menu.querySelectorAll('.lang-option');
+    for (var i = 0; i < opts.length; i++) {
+      if (opts[i].getAttribute('data-lang') === lang) {
+        opts[i].classList.add('active');
+      } else {
+        opts[i].classList.remove('active');
+      }
     }
   }
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initLangSwitcher);
-} else {
-  initLangSwitcher();
-}
+// Close menu on outside click
+document.addEventListener('click', function (e) {
+  var menu = document.getElementById('langMenu');
+  if (!menu) return;
+  if (!e.target.closest('.lang-btn') && !e.target.closest('.lang-menu')) {
+    menu.classList.remove('open');
+  }
+});
+
+// Restore saved language on load
+(function () {
+  var saved;
+  try { saved = localStorage.getItem('h-village-lang'); } catch (e) {}
+  if (saved && translations[saved]) {
+    switchLang(saved);
+  }
 })();
