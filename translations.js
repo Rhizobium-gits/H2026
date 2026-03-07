@@ -1022,10 +1022,27 @@ function initLangSwitcher() {
   wrapper.appendChild(btn);
   wrapper.appendChild(menu);
 
+  // Desktop: insert as <li> between Team and Paper in nav-links
+  var paperLi = document.querySelector('.nav-links .nav-cta');
+  if (paperLi) paperLi = paperLi.parentElement;
+  var navLinks = document.querySelector('.nav-links');
+  if (navLinks && paperLi) {
+    var li = document.createElement('li');
+    li.appendChild(wrapper);
+    navLinks.insertBefore(li, paperLi);
+  }
+
+  // Mobile: clone button into nav-right (before hamburger)
+  var mobileBtn = btn.cloneNode(true);
+  mobileBtn.className = 'lang-btn lang-btn-mobile';
+  mobileBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    menu.classList.toggle('open');
+  });
   var navRight = document.querySelector('.nav-right');
   var navToggle = document.getElementById('navToggle');
   if (navRight && navToggle) {
-    navRight.insertBefore(wrapper, navToggle);
+    navRight.insertBefore(mobileBtn, navToggle);
   }
 
   var saved;
