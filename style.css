@@ -121,7 +121,7 @@ img{max-width:100%;display:block}
 .sec-sub-dark{color:var(--g500)}
 
 /* === TWO COL (About) === */
-.col-text{animation:softBreathe 10s ease-in-out infinite}
+.col-text{animation:softBreathe 10s ease-in-out infinite;animation-delay:-2s}
 .two-col{display:grid;grid-template-columns:1fr;gap:48px;margin-top:48px}
 @media(min-width:768px){.two-col{grid-template-columns:1fr 1fr;gap:80px;align-items:start}}
 .lead{font-size:clamp(1.1rem,2vw,1.35rem);font-weight:400;color:var(--g200);line-height:1.7;margin-bottom:24px}
@@ -237,11 +237,12 @@ img{max-width:100%;display:block}
 
 /* === SHARED BREATHING (subtle for text cards) === */
 @keyframes softBreathe{
-  0%{transform:scale(1) translateY(0);border-radius:18px 20px 20px 18px;box-shadow:0 0 0 0 rgba(100,180,255,0)}
-  20%{transform:scale(1.004,.998) translateY(-.4px);border-radius:20px 18px 19px 21px;box-shadow:0 0 10px 1px rgba(100,180,255,.03)}
-  45%{transform:scale(.998,1.004) translateY(.3px);border-radius:19px 21px 18px 20px;box-shadow:0 0 8px 0 rgba(100,180,255,.02)}
-  70%{transform:scale(1.003,.999) translateY(-.2px);border-radius:21px 19px 20px 18px;box-shadow:0 0 6px 1px rgba(100,180,255,.02)}
-  100%{transform:scale(1) translateY(0);border-radius:18px 20px 20px 18px;box-shadow:0 0 0 0 rgba(100,180,255,0)}
+  0%{transform:scale(1) translateY(0);border-radius:18px 22px 20px 24px;box-shadow:0 0 0 0 rgba(100,180,255,0)}
+  14%{transform:scale(1.007,.995) translateY(-.6px);border-radius:22px 18px 24px 20px;box-shadow:0 0 12px 1px rgba(100,180,255,.04)}
+  35%{transform:scale(.995,1.007) translateY(.5px);border-radius:20px 24px 18px 22px;box-shadow:0 0 8px 0 rgba(100,180,255,.03)}
+  58%{transform:scale(1.005,.997) translateY(-.3px);border-radius:24px 20px 22px 18px;box-shadow:0 0 10px 1px rgba(100,180,255,.03)}
+  78%{transform:scale(.997,1.004) translateY(.4px);border-radius:19px 23px 21px 17px;box-shadow:0 0 6px 0 rgba(100,180,255,.02)}
+  100%{transform:scale(1) translateY(0);border-radius:18px 22px 20px 24px;box-shadow:0 0 0 0 rgba(100,180,255,0)}
 }
 
 /* === DRAG TEAR SYSTEM (bento items) === */
