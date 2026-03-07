@@ -1024,7 +1024,7 @@
     });
 
     document.addEventListener('click', function (e) {
-      if (!menu.contains(e.target) && e.target !== btn) {
+      if (!menu.contains(e.target) && !btn.contains(e.target)) {
         menu.classList.remove('open');
       }
     });
