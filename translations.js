@@ -37,14 +37,14 @@
       // Findings
       'findings.tag': '02 \u2014 Findings',
       'findings.heading': '4つの建物、<br>4つの<span class="grad-text">文化</span>。',
-      'findings.c1.h': '男子寮',
+      'findings.c1.h': 'Basil',
       'findings.c1.p': '男性のみが居住する棟。独自のコミュニティ文化が形成される。',
-      'findings.c2.h': '女子寮',
+      'findings.c2.h': 'Turmeric',
       'findings.c2.p': '女性のみが居住する棟。比較対照として重要な役割を持つ。',
-      'findings.c3.h': '共学寮',
+      'findings.c3.h': 'Paprika',
       'findings.c3.sm': 'フロア分離型',
       'findings.c3.p': '男女がフロアごとに分かれて居住する混合棟。',
-      'findings.c4.h': '共学寮',
+      'findings.c4.h': 'Rosemary',
       'findings.c4.sm': '同一フロア型',
       'findings.c4.p': '男女が同一フロアに居住。最も混合度が高い棟。',
       'findings.quote': '回答パターンの違いは性別ではなく、<strong>建物という社会単位</strong>に紐づいていた。',
@@ -128,14 +128,14 @@
       'full1.h3': 'Keio University<br>Shonan Fujisawa Campus',
       'findings.tag': '02 \u2014 Findings',
       'findings.heading': 'Four buildings,<br>four <span class="grad-text">cultures</span>.',
-      'findings.c1.h': 'Male Dorm',
+      'findings.c1.h': 'Basil',
       'findings.c1.p': 'A building exclusively for male residents. A unique community culture emerges.',
-      'findings.c2.h': 'Female Dorm',
+      'findings.c2.h': 'Turmeric',
       'findings.c2.p': 'A building exclusively for female residents. Serves as an important comparison group.',
-      'findings.c3.h': 'Co-ed Dorm',
+      'findings.c3.h': 'Paprika',
       'findings.c3.sm': 'Floor-separated',
       'findings.c3.p': 'A mixed building where males and females reside on separate floors.',
-      'findings.c4.h': 'Co-ed Dorm',
+      'findings.c4.h': 'Rosemary',
       'findings.c4.sm': 'Same-floor',
       'findings.c4.p': 'Males and females on the same floor. The most integrated building.',
       'findings.quote': 'Differences in response patterns were linked not to gender, but to <strong>the building as a social unit</strong>.',
@@ -213,14 +213,14 @@
       'full1.h3': '庆应义塾大学<br>湘南藤泽校区',
       'findings.tag': '02 \u2014 发现',
       'findings.heading': '四栋建筑，<br>四种<span class="grad-text">文化</span>。',
-      'findings.c1.h': '男生宿舍',
+      'findings.c1.h': 'Basil',
       'findings.c1.p': '仅限男性居住的楼栋。形成独特的社区文化。',
-      'findings.c2.h': '女生宿舍',
+      'findings.c2.h': 'Turmeric',
       'findings.c2.p': '仅限女性居住的楼栋。作为重要的对照组。',
-      'findings.c3.h': '混合宿舍',
+      'findings.c3.h': 'Paprika',
       'findings.c3.sm': '分层型',
       'findings.c3.p': '男女按楼层分开居住的混合楼。',
-      'findings.c4.h': '混合宿舍',
+      'findings.c4.h': 'Rosemary',
       'findings.c4.sm': '同层型',
       'findings.c4.p': '男女在同一楼层居住。混合程度最高的楼栋。',
       'findings.quote': '回答模式的差异不是与性别相关，而是与<strong>建筑这一社会单位</strong>相关。',
@@ -298,14 +298,14 @@
       'full1.h3': 'มหาวิทยาลัยเคโอ<br>วิทยาเขตโชนันฟูจิซาวะ',
       'findings.tag': '02 \u2014 ผลการค้นพบ',
       'findings.heading': 'สี่อาคาร<br>สี่<span class="grad-text">วัฒนธรรม</span>',
-      'findings.c1.h': 'หอชาย',
+      'findings.c1.h': 'Basil',
       'findings.c1.p': 'อาคารสำหรับผู้ชายเท่านั้น เกิดวัฒนธรรมชุมชนเฉพาะตัว',
-      'findings.c2.h': 'หอหญิง',
+      'findings.c2.h': 'Turmeric',
       'findings.c2.p': 'อาคารสำหรับผู้หญิงเท่านั้น มีบทบาทสำคัญในการเปรียบเทียบ',
-      'findings.c3.h': 'หอสหศึกษา',
+      'findings.c3.h': 'Paprika',
       'findings.c3.sm': 'แบบแยกชั้น',
       'findings.c3.p': 'อาคารผสมที่ชายหญิงอาศัยแยกชั้นกัน',
-      'findings.c4.h': 'หอสหศึกษา',
+      'findings.c4.h': 'Rosemary',
       'findings.c4.sm': 'แบบชั้นเดียวกัน',
       'findings.c4.p': 'ชายหญิงอยู่ชั้นเดียวกัน อาคารที่ผสมผสานมากที่สุด',
       'findings.quote': 'ความแตกต่างของรูปแบบการตอบไม่เกี่ยวข้องกับเพศ แต่เกี่ยวข้องกับ<strong>อาคารในฐานะหน่วยทางสังคม</strong>',
@@ -383,14 +383,14 @@
       'full1.h3': 'جامعة كيو<br>حرم شونان فوجيساوا',
       'findings.tag': '02 \u2014 النتائج',
       'findings.heading': 'أربعة مبانٍ،<br>أربع <span class="grad-text">ثقافات</span>.',
-      'findings.c1.h': 'سكن الذكور',
+      'findings.c1.h': 'Basil',
       'findings.c1.p': 'مبنى للذكور فقط. تتشكل ثقافة مجتمعية فريدة.',
-      'findings.c2.h': 'سكن الإناث',
+      'findings.c2.h': 'Turmeric',
       'findings.c2.p': 'مبنى للإناث فقط. يلعب دورًا مهمًا كمجموعة مقارنة.',
-      'findings.c3.h': 'سكن مختلط',
+      'findings.c3.h': 'Paprika',
       'findings.c3.sm': 'طوابق منفصلة',
       'findings.c3.p': 'مبنى مختلط حيث يسكن الذكور والإناث في طوابق منفصلة.',
-      'findings.c4.h': 'سكن مختلط',
+      'findings.c4.h': 'Rosemary',
       'findings.c4.sm': 'طابق واحد',
       'findings.c4.p': 'الذكور والإناث في نفس الطابق. المبنى الأكثر اندماجًا.',
       'findings.quote': 'اختلافات أنماط الاستجابة مرتبطة ليس بالجنس، بل بـ<strong>المبنى كوحدة اجتماعية</strong>.',
@@ -468,14 +468,14 @@
       'full1.h3': 'Đại học Keio<br>Khuôn viên Shonan Fujisawa',
       'findings.tag': '02 \u2014 Phát hiện',
       'findings.heading': 'Bốn tòa nhà,<br>bốn <span class="grad-text">văn hóa</span>.',
-      'findings.c1.h': 'KTX Nam',
+      'findings.c1.h': 'Basil',
       'findings.c1.p': 'Tòa nhà chỉ dành cho nam. Hình thành văn hóa cộng đồng riêng biệt.',
-      'findings.c2.h': 'KTX Nữ',
+      'findings.c2.h': 'Turmeric',
       'findings.c2.p': 'Tòa nhà chỉ dành cho nữ. Đóng vai trò quan trọng làm nhóm so sánh.',
-      'findings.c3.h': 'KTX Hỗn hợp',
+      'findings.c3.h': 'Paprika',
       'findings.c3.sm': 'Tách tầng',
       'findings.c3.p': 'Tòa nhà hỗn hợp nơi nam nữ ở các tầng riêng biệt.',
-      'findings.c4.h': 'KTX Hỗn hợp',
+      'findings.c4.h': 'Rosemary',
       'findings.c4.sm': 'Cùng tầng',
       'findings.c4.p': 'Nam nữ ở cùng tầng. Tòa nhà có mức độ hòa nhập cao nhất.',
       'findings.quote': 'Sự khác biệt trong mẫu phản hồi không liên quan đến giới tính, mà liên quan đến <strong>tòa nhà như một đơn vị xã hội</strong>.',
@@ -553,14 +553,14 @@
       'full1.h3': 'Keio Universit\u00e4t<br>Shonan Fujisawa Campus',
       'findings.tag': '02 \u2014 Ergebnisse',
       'findings.heading': 'Vier Geb\u00e4ude,<br>vier <span class="grad-text">Kulturen</span>.',
-      'findings.c1.h': 'M\u00e4nnerwohnheim',
+      'findings.c1.h': 'Basil',
       'findings.c1.p': 'Ein Geb\u00e4ude nur f\u00fcr m\u00e4nnliche Bewohner. Eine eigene Gemeinschaftskultur entsteht.',
-      'findings.c2.h': 'Frauenwohnheim',
+      'findings.c2.h': 'Turmeric',
       'findings.c2.p': 'Ein Geb\u00e4ude nur f\u00fcr weibliche Bewohner. Dient als wichtige Vergleichsgruppe.',
-      'findings.c3.h': 'Gemischtes Wohnheim',
+      'findings.c3.h': 'Paprika',
       'findings.c3.sm': 'Getrennte Etagen',
       'findings.c3.p': 'Ein gemischtes Geb\u00e4ude, in dem M\u00e4nner und Frauen auf getrennten Etagen wohnen.',
-      'findings.c4.h': 'Gemischtes Wohnheim',
+      'findings.c4.h': 'Rosemary',
       'findings.c4.sm': 'Gleiche Etage',
       'findings.c4.p': 'M\u00e4nner und Frauen auf derselben Etage. Das am st\u00e4rksten integrierte Geb\u00e4ude.',
       'findings.quote': 'Unterschiede in Antwortmustern waren nicht mit dem Geschlecht, sondern mit dem <strong>Geb\u00e4ude als sozialer Einheit</strong> verkn\u00fcpft.',
@@ -638,14 +638,14 @@
       'full1.h3': 'Universit\u00e9 Keio<br>Campus Shonan Fujisawa',
       'findings.tag': '02 \u2014 R\u00e9sultats',
       'findings.heading': 'Quatre b\u00e2timents,<br>quatre <span class="grad-text">cultures</span>.',
-      'findings.c1.h': 'Dortoir Masculin',
+      'findings.c1.h': 'Basil',
       'findings.c1.p': 'Un b\u00e2timent r\u00e9serv\u00e9 aux hommes. Une culture communautaire unique se forme.',
-      'findings.c2.h': 'Dortoir F\u00e9minin',
+      'findings.c2.h': 'Turmeric',
       'findings.c2.p': 'Un b\u00e2timent r\u00e9serv\u00e9 aux femmes. Sert de groupe de comparaison important.',
-      'findings.c3.h': 'Dortoir Mixte',
+      'findings.c3.h': 'Paprika',
       'findings.c3.sm': '\u00c9tages s\u00e9par\u00e9s',
       'findings.c3.p': 'Un b\u00e2timent mixte o\u00f9 hommes et femmes vivent sur des \u00e9tages s\u00e9par\u00e9s.',
-      'findings.c4.h': 'Dortoir Mixte',
+      'findings.c4.h': 'Rosemary',
       'findings.c4.sm': 'M\u00eame \u00e9tage',
       'findings.c4.p': 'Hommes et femmes au m\u00eame \u00e9tage. Le b\u00e2timent le plus int\u00e9gr\u00e9.',
       'findings.quote': 'Les diff\u00e9rences de sch\u00e9mas de r\u00e9ponse \u00e9taient li\u00e9es non au genre, mais au <strong>b\u00e2timent en tant qu\'unit\u00e9 sociale</strong>.',
@@ -723,14 +723,14 @@
       'full1.h3': '\u6176\u61c9\u7fa9\u587e\u5927\u5b78<br>\u6e58\u5357\u85e4\u6fa4\u6821\u5340',
       'findings.tag': '02 \u2014 \u767c\u73fe',
       'findings.heading': '\u56db\u68df\u5efa\u7bc9\uff0c<br>\u56db\u7a2e<span class="grad-text">\u6587\u5316</span>\u3002',
-      'findings.c1.h': '\u7537\u751f\u5bbf\u820d',
+      'findings.c1.h': 'Basil',
       'findings.c1.p': '\u50c5\u9650\u7537\u6027\u5c45\u4f4f\u7684\u6a13\u68df\u3002\u5f62\u6210\u7368\u7279\u7684\u793e\u5340\u6587\u5316\u3002',
-      'findings.c2.h': '\u5973\u751f\u5bbf\u820d',
+      'findings.c2.h': 'Turmeric',
       'findings.c2.p': '\u50c5\u9650\u5973\u6027\u5c45\u4f4f\u7684\u6a13\u68df\u3002\u4f5c\u70ba\u91cd\u8981\u7684\u5c0d\u7167\u7d44\u3002',
-      'findings.c3.h': '\u6df7\u5408\u5bbf\u820d',
+      'findings.c3.h': 'Paprika',
       'findings.c3.sm': '\u5206\u5c64\u578b',
       'findings.c3.p': '\u7537\u5973\u6309\u6a13\u5c64\u5206\u958b\u5c45\u4f4f\u7684\u6df7\u5408\u6a13\u3002',
-      'findings.c4.h': '\u6df7\u5408\u5bbf\u820d',
+      'findings.c4.h': 'Rosemary',
       'findings.c4.sm': '\u540c\u5c64\u578b',
       'findings.c4.p': '\u7537\u5973\u5728\u540c\u4e00\u6a13\u5c64\u5c45\u4f4f\u3002\u6df7\u5408\u7a0b\u5ea6\u6700\u9ad8\u7684\u6a13\u68df\u3002',
       'findings.quote': '\u56de\u7b54\u6a21\u5f0f\u7684\u5dee\u7570\u4e0d\u662f\u8207\u6027\u5225\u76f8\u95dc\uff0c\u800c\u662f\u8207<strong>\u5efa\u7bc9\u9019\u4e00\u793e\u6703\u55ae\u4f4d</strong>\u76f8\u95dc\u3002',
@@ -808,14 +808,14 @@
       'full1.h3': '\uac8c\uc774\uc624 \ub300\ud559\uad50<br>\uc1fc\ub09c \ud6c4\uc9c0\uc0ac\uc640 \uce94\ud37c\uc2a4',
       'findings.tag': '02 \u2014 \ubc1c\uacac',
       'findings.heading': '4\uac1c\uc758 \uac74\ubb3c,<br>4\uac1c\uc758 <span class="grad-text">\ubb38\ud654</span>.',
-      'findings.c1.h': '\ub0a8\uc790 \uae30\uc219\uc0ac',
+      'findings.c1.h': 'Basil',
       'findings.c1.p': '\ub0a8\uc131\ub9cc \uac70\uc8fc\ud558\ub294 \uac74\ubb3c. \ub3c5\uc790\uc801\uc778 \ucee4\ubba4\ub2c8\ud2f0 \ubb38\ud654\uac00 \ud615\uc131\ub41c\ub2e4.',
-      'findings.c2.h': '\uc5ec\uc790 \uae30\uc219\uc0ac',
+      'findings.c2.h': 'Turmeric',
       'findings.c2.p': '\uc5ec\uc131\ub9cc \uac70\uc8fc\ud558\ub294 \uac74\ubb3c. \ube44\uad50 \ub300\uc870\uad70\uc73c\ub85c \uc911\uc694\ud55c \uc5ed\ud560\uc744 \ud55c\ub2e4.',
-      'findings.c3.h': '\ud63c\uc131 \uae30\uc219\uc0ac',
+      'findings.c3.h': 'Paprika',
       'findings.c3.sm': '\uce35 \ubd84\ub9ac\ud615',
       'findings.c3.p': '\ub0a8\ub140\uac00 \uce35\ubcc4\ub85c \ub098\ub220 \uac70\uc8fc\ud558\ub294 \ud63c\ud569 \uac74\ubb3c.',
-      'findings.c4.h': '\ud63c\uc131 \uae30\uc219\uc0ac',
+      'findings.c4.h': 'Rosemary',
       'findings.c4.sm': '\uac19\uc740 \uce35\ud615',
       'findings.c4.p': '\ub0a8\ub140\uac00 \uac19\uc740 \uce35\uc5d0 \uac70\uc8fc. \uac00\uc7a5 \ud1b5\ud569\ub3c4\uac00 \ub192\uc740 \uac74\ubb3c.',
       'findings.quote': '\uc751\ub2f5 \ud328\ud134\uc758 \ucc28\uc774\ub294 \uc131\ubcc4\uc774 \uc544\ub2cc <strong>\uac74\ubb3c\uc774\ub77c\ub294 \uc0ac\ud68c\uc801 \ub2e8\uc704</strong>\uc640 \uad00\ub828\ub418\uc5b4 \uc788\uc5c8\ub2e4.',
@@ -893,14 +893,14 @@
       'full1.h3': 'Keio \u1010\u1000\u1039\u1000\u101e\u102d\u102f\u101c\u103a<br>Shonan Fujisawa \u1000\u103b\u1031\u102c\u1004\u103a\u1038\u101d\u1004\u103a\u1038',
       'findings.tag': '02 \u2014 \u1010\u103d\u1031\u1037\u101b\u103e\u102d\u1001\u103b\u1000\u103a',
       'findings.heading': '\u1021\u1006\u1031\u102c\u1000\u103a\u1021\u1025\u103a \u1044 \u101c\u102f\u1036\u1038\u104a<br>\u101a\u1025\u103a\u1000\u103b\u1031\u1038\u1019\u103e\u102f <span class="grad-text">\u1044 \u1001\u102f</span>\u104b',
-      'findings.c1.h': '\u1021\u1019\u103b\u102d\u102f\u1038\u101e\u102c\u1038\u1021\u102d\u1015\u103a\u1006\u1031\u102c\u1004\u103a',
+      'findings.c1.h': 'Basil',
       'findings.c1.p': '\u1021\u1019\u103b\u102d\u102f\u1038\u101e\u102c\u1038\u101e\u102e\u1038\u101e\u1014\u103a\u1037 \u1014\u1031\u1011\u102d\u102f\u1004\u103a\u101e\u1031\u102c \u1021\u1006\u1031\u102c\u1000\u103a\u1021\u1025\u103a\u104b \u1011\u1030\u1038\u1001\u103c\u102c\u1038\u101e\u1031\u102c \u101c\u1030\u1019\u103e\u102f\u1021\u101e\u102d\u102f\u1004\u103a\u1038\u101a\u1025\u103a\u1000\u103b\u1031\u1038\u1019\u103e\u102f \u1016\u1014\u103a\u1010\u102e\u1038\u101c\u102c\u101e\u100a\u103a\u104b',
-      'findings.c2.h': '\u1021\u1019\u103b\u102d\u102f\u1038\u101e\u1019\u102e\u1038\u1021\u102d\u1015\u103a\u1006\u1031\u102c\u1004\u103a',
+      'findings.c2.h': 'Turmeric',
       'findings.c2.p': '\u1021\u1019\u103b\u102d\u102f\u1038\u101e\u1019\u102e\u1038\u101e\u102e\u1038\u101e\u1014\u103a\u1037 \u1014\u1031\u1011\u102d\u102f\u1004\u103a\u101e\u1031\u102c \u1021\u1006\u1031\u102c\u1000\u103a\u1021\u1025\u103a\u104b \u1014\u103e\u102d\u102f\u1004\u103a\u1038\u101a\u103e\u1025\u103a\u1021\u102f\u1015\u103a\u1021\u1016\u103c\u1005\u103a \u1021\u101b\u1031\u1038\u1015\u102b\u101e\u1031\u102c \u1021\u1001\u1014\u103a\u1038\u1000 \u1021\u101b\u1031\u1038\u1015\u102b\u101e\u100a\u103a\u104b',
-      'findings.c3.h': '\u101b\u1031\u102c\u1014\u103e\u1031\u1021\u102d\u1015\u103a\u1006\u1031\u102c\u1004\u103a',
+      'findings.c3.h': 'Paprika',
       'findings.c3.sm': '\u1021\u1011\u1015\u103a\u1001\u103d\u1032\u1011\u102c\u1038',
       'findings.c3.p': '\u1021\u1019\u103b\u102d\u102f\u1038\u101e\u102c\u1038\u1014\u103e\u1004\u103a\u1037 \u1021\u1019\u103b\u102d\u102f\u1038\u101e\u1019\u102e\u1038 \u1021\u1011\u1015\u103a\u1001\u103d\u1032\u104e \u1014\u1031\u1011\u102d\u102f\u1004\u103a\u101e\u1031\u102c \u101b\u1031\u102c\u1014\u103e\u1031\u1021\u1006\u1031\u102c\u1000\u103a\u1021\u1025\u103a\u104b',
-      'findings.c4.h': '\u101b\u1031\u102c\u1014\u103e\u1031\u1021\u102d\u1015\u103a\u1006\u1031\u102c\u1004\u103a',
+      'findings.c4.h': 'Rosemary',
       'findings.c4.sm': '\u1010\u1030\u100a\u102e\u1021\u1011\u1015\u103a',
       'findings.c4.p': '\u1021\u1019\u103b\u102d\u102f\u1038\u101e\u102c\u1038\u1014\u103e\u1004\u103a\u1037 \u1021\u1019\u103b\u102d\u102f\u1038\u101e\u1019\u102e\u1038 \u1010\u1030\u100a\u102e\u1021\u1011\u1015\u103a\u1010\u103d\u1004\u103a \u1014\u1031\u1011\u102d\u102f\u1004\u103a\u104b \u1021\u101b\u1031\u102c\u1014\u103e\u1031\u1021\u1019\u103b\u102c\u1038\u1006\u102f\u1036\u1038 \u1021\u1006\u1031\u102c\u1000\u103a\u1021\u1025\u103a\u104b',
       'findings.quote': '\u1021\u1016\u103c\u1031\u1015\u102f\u1036\u1005\u1036\u1019\u103b\u102c\u1038\u101e\u100a\u103a \u1000\u103b\u102c\u1038\u1019\u103b\u102d\u102f\u1038\u1019\u101f\u102f\u1010\u103a\u1018\u1032 <strong>\u1021\u1006\u1031\u102c\u1000\u103a\u1021\u1025\u103a\u1006\u102d\u102f\u101e\u1031\u102c \u101c\u1030\u1019\u103e\u102f\u101b\u1031\u1038\u101a\u1030\u1014\u1005\u103a</strong>\u1014\u103e\u1004\u103a\u1037 \u1006\u1000\u103a\u1005\u1015\u103a\u1014\u1031\u1000\u103c\u1031\u102c\u1004\u103a\u1038 \u1010\u103d\u1031\u1037\u101b\u103e\u102d\u1001\u1032\u1037\u101e\u100a\u103a\u104b',
@@ -990,57 +990,13 @@
     try { localStorage.setItem('h-village-lang', lang); } catch (e) {}
   }
 
-  // Language switcher — all buttons already in HTML
-  function initLangSwitcher() {
-    var btn = document.getElementById('langBtn');
-    var menu = document.getElementById('langMenu');
-    if (!btn || !menu) return;
+  // Expose applyLang globally so inline script can use it
+  window.applyLang = applyLang;
 
-    // Attach click to each pre-existing option button
-    var opts = menu.querySelectorAll('.lang-option');
-    for (var i = 0; i < opts.length; i++) {
-      opts[i].addEventListener('click', function (e) {
-        e.stopPropagation();
-        var code = this.getAttribute('data-lang');
-        applyLang(code);
-        menu.classList.remove('open');
-        for (var j = 0; j < opts.length; j++) {
-          opts[j].classList.toggle('active', opts[j].getAttribute('data-lang') === code);
-        }
-      });
-    }
-
-    // Toggle menu on button click, position it below button
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      var r = btn.getBoundingClientRect();
-      menu.style.top = (r.bottom + 8) + 'px';
-      menu.style.right = (window.innerWidth - r.right) + 'px';
-      menu.style.left = 'auto';
-      menu.classList.toggle('open');
-    });
-
-    // Close on outside click
-    document.addEventListener('click', function (e) {
-      if (!menu.contains(e.target) && !btn.contains(e.target)) {
-        menu.classList.remove('open');
-      }
-    });
-
-    // Restore saved language
-    var saved;
-    try { saved = localStorage.getItem('h-village-lang'); } catch (e) {}
-    if (saved && translations[saved]) {
-      applyLang(saved);
-      for (var j = 0; j < opts.length; j++) {
-        opts[j].classList.toggle('active', opts[j].getAttribute('data-lang') === saved);
-      }
-    } else {
-      var ja = menu.querySelector('[data-lang="ja"]');
-      if (ja) ja.classList.add('active');
-    }
+  // Restore saved language on load
+  var saved;
+  try { saved = localStorage.getItem('h-village-lang'); } catch (e) {}
+  if (saved && translations[saved]) {
+    applyLang(saved);
   }
-
-  initLangSwitcher();
 })();

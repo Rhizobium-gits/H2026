@@ -130,25 +130,25 @@
       <div class="card-grid-4">
         <div class="glass-card reveal">
           <span class="card-num">01</span>
-          <h3 data-i18n="findings.c1.h">男子寮</h3>
+          <h3 data-i18n="findings.c1.h">Basil</h3>
           <p data-i18n="findings.c1.p">男性のみが居住する棟。独自のコミュニティ文化が形成される。</p>
           <span class="card-tag">Male Only</span>
         </div>
         <div class="glass-card reveal reveal-d1">
           <span class="card-num">02</span>
-          <h3 data-i18n="findings.c2.h">女子寮</h3>
+          <h3 data-i18n="findings.c2.h">Turmeric</h3>
           <p data-i18n="findings.c2.p">女性のみが居住する棟。比較対照として重要な役割を持つ。</p>
           <span class="card-tag">Female Only</span>
         </div>
         <div class="glass-card reveal reveal-d2">
           <span class="card-num">03</span>
-          <h3 data-i18n="findings.c3.h">共学寮</h3>
+          <h3 data-i18n="findings.c3.h">Paprika</h3>
           <p data-i18n="findings.c3.p">男女がフロアごとに分かれて居住する混合棟。</p>
           <span class="card-tag">Co-ed / Separated</span>
         </div>
         <div class="glass-card reveal reveal-d3">
           <span class="card-num">04</span>
-          <h3 data-i18n="findings.c4.h">共学寮</h3>
+          <h3 data-i18n="findings.c4.h">Rosemary</h3>
           <p data-i18n="findings.c4.p">男女が同一フロアに居住。最も混合度が高い棟。</p>
           <span class="card-tag">Co-ed / Mixed</span>
         </div>
@@ -422,5 +422,57 @@
 
   <script src="script.js"></script>
   <script src="translations.js"></script>
+  <script>
+  // Inline lang switcher — guaranteed to run after DOM + translations.js
+  (function(){
+    var btn = document.getElementById('langBtn');
+    var menu = document.getElementById('langMenu');
+    if(!btn||!menu) return;
+    var opts = menu.querySelectorAll('.lang-option');
+
+    // Toggle menu
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      var r = btn.getBoundingClientRect();
+      menu.style.top = (r.bottom + 8) + 'px';
+      menu.style.right = (window.innerWidth - r.right) + 'px';
+      menu.style.left = 'auto';
+      menu.classList.toggle('open');
+    });
+
+    // Option clicks
+    for(var i=0;i<opts.length;i++){
+      opts[i].addEventListener('click', function(e){
+        e.stopPropagation();
+        var code = this.getAttribute('data-lang');
+        if(window.applyLang) window.applyLang(code);
+        menu.classList.remove('open');
+        for(var j=0;j<opts.length;j++){
+          opts[j].classList.toggle('active', opts[j].getAttribute('data-lang')===code);
+        }
+      });
+    }
+
+    // Close on outside click
+    document.addEventListener('click', function(e){
+      if(!menu.contains(e.target)&&!btn.contains(e.target)){
+        menu.classList.remove('open');
+      }
+    });
+
+    // Mark saved lang as active
+    var saved;
+    try{saved=localStorage.getItem('h-village-lang');}catch(e){}
+    if(saved){
+      for(var j=0;j<opts.length;j++){
+        opts[j].classList.toggle('active',opts[j].getAttribute('data-lang')===saved);
+      }
+    } else {
+      var ja=menu.querySelector('[data-lang="ja"]');
+      if(ja)ja.classList.add('active');
+    }
+  })();
+  </script>
 </body>
 </html>
