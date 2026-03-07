@@ -237,12 +237,12 @@ img{max-width:100%;display:block}
 
 /* === SHARED BREATHING (subtle for text cards) === */
 @keyframes softBreathe{
-  0%{transform:scale(1) translateY(0);border-radius:18px 22px 20px 24px;box-shadow:0 0 0 0 rgba(100,180,255,0)}
-  14%{transform:scale(1.007,.995) translateY(-.6px);border-radius:22px 18px 24px 20px;box-shadow:0 0 12px 1px rgba(100,180,255,.04)}
-  35%{transform:scale(.995,1.007) translateY(.5px);border-radius:20px 24px 18px 22px;box-shadow:0 0 8px 0 rgba(100,180,255,.03)}
-  58%{transform:scale(1.005,.997) translateY(-.3px);border-radius:24px 20px 22px 18px;box-shadow:0 0 10px 1px rgba(100,180,255,.03)}
-  78%{transform:scale(.997,1.004) translateY(.4px);border-radius:19px 23px 21px 17px;box-shadow:0 0 6px 0 rgba(100,180,255,.02)}
-  100%{transform:scale(1) translateY(0);border-radius:18px 22px 20px 24px;box-shadow:0 0 0 0 rgba(100,180,255,0)}
+  0%{transform:scale(1) translateY(0);border-radius:16px 26px 20px 28px;box-shadow:0 0 0 0 rgba(100,180,255,0)}
+  14%{transform:scale(1.015,.988) translateY(-1.2px);border-radius:26px 16px 28px 18px;box-shadow:0 0 14px 2px rgba(100,180,255,.05)}
+  35%{transform:scale(.988,1.015) translateY(1px);border-radius:20px 28px 16px 26px;box-shadow:0 0 10px 0 rgba(100,180,255,.04)}
+  58%{transform:scale(1.012,.99) translateY(-.8px);border-radius:28px 18px 26px 16px;box-shadow:0 0 12px 2px rgba(100,180,255,.04)}
+  78%{transform:scale(.99,1.012) translateY(.8px);border-radius:18px 28px 22px 14px;box-shadow:0 0 8px 0 rgba(100,180,255,.03)}
+  100%{transform:scale(1) translateY(0);border-radius:16px 26px 20px 28px;box-shadow:0 0 0 0 rgba(100,180,255,0)}
 }
 
 /* === DRAG TEAR SYSTEM (bento items) === */
