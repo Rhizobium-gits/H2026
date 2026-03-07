@@ -418,18 +418,18 @@
   </div>
 
   <script src="script.js"></script>
-  <script src="translations.js?v=3"></script>
+  <script src="translations.js?v=4"></script>
   <script>
   /* ===== Language Switcher ===== */
   (function () {
     var menu = document.getElementById('langMenu');
-    var btns = [document.getElementById('langBtn')];
-    if (!menu) return;
+    var btn = document.getElementById('langBtn');
+    if (!menu || !btn) return;
 
     function applyLang(lang) {
-      var T = (typeof translations !== 'undefined') ? translations : {};
+      var T = (typeof translations !== 'undefined') ? translations : null;
+      if (!T || !T[lang]) return;
       var dict = T[lang];
-      if (!dict) return;
       var els = document.querySelectorAll('[data-i18n]');
       for (var i = 0; i < els.length; i++) {
         var key = els[i].getAttribute('data-i18n');
@@ -438,45 +438,44 @@
       document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
       document.documentElement.lang = lang;
       var LN = (typeof langNames !== 'undefined') ? langNames : {};
-      var labels = document.querySelectorAll('#langLabel');
-      for (var i = 0; i < labels.length; i++) labels[i].textContent = LN[lang] || lang;
+      var label = document.getElementById('langLabel');
+      if (label) label.textContent = LN[lang] || lang;
       try { localStorage.setItem('h-village-lang', lang); } catch (e) {}
     }
 
-    function toggleMenu(e) {
+    // Toggle menu
+    btn.onclick = function (e) {
+      e.preventDefault();
       e.stopPropagation();
-      var r = (e.currentTarget || e.target).getBoundingClientRect();
+      var r = btn.getBoundingClientRect();
       menu.style.top = (r.bottom + 8) + 'px';
       menu.style.right = (window.innerWidth - r.right) + 'px';
       menu.style.left = 'auto';
       menu.classList.toggle('open');
-    }
+      return false;
+    };
 
-    // Attach toggle to both desktop and mobile buttons
-    for (var b = 0; b < btns.length; b++) {
-      if (btns[b]) btns[b].addEventListener('click', toggleMenu);
-    }
-
-    // Attach click to each option
+    // Each language option
     var opts = menu.querySelectorAll('.lang-option');
     for (var i = 0; i < opts.length; i++) {
-      opts[i].addEventListener('click', function () {
+      opts[i].onclick = function (e) {
+        e.preventDefault();
+        e.stopPropagation();
         var code = this.getAttribute('data-lang');
         applyLang(code);
         menu.classList.remove('open');
         for (var j = 0; j < opts.length; j++) {
           opts[j].classList.toggle('active', opts[j].getAttribute('data-lang') === code);
         }
-      });
+        return false;
+      };
     }
 
     // Close on outside click
     document.addEventListener('click', function (e) {
-      var isBtn = false;
-      for (var b = 0; b < btns.length; b++) {
-        if (btns[b] && btns[b].contains(e.target)) isBtn = true;
+      if (!btn.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.remove('open');
       }
-      if (!isBtn && !menu.contains(e.target)) menu.classList.remove('open');
     });
 
     // Restore saved language
