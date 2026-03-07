@@ -1058,5 +1058,9 @@ function initLangSwitcher() {
   }
 }
 
-initLangSwitcher();
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initLangSwitcher);
+} else {
+  initLangSwitcher();
+}
 })();
