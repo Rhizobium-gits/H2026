@@ -31,7 +31,6 @@
         <li><a href="https://osf.io/t3nbf_v1" class="nav-cta" target="_blank" rel="noopener" data-i18n="nav.paper">Paper</a></li>
       </ul>
       <div class="nav-right">
-        <button class="lang-btn" id="langBtn" type="button" onclick="event.preventDefault();event.stopPropagation();toggleLangMenu();return false;"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M1.5 8h13M8 1.5C9.5 3.5 10.5 5.5 10.5 8s-1 4.5-2.5 6.5C6.5 12.5 5.5 10.5 5.5 8S6.5 3.5 8 1.5z" stroke="currentColor" stroke-width="1.2"/></svg><span id="langLabel">日本語</span></button>
         <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu">
           <span></span>
           <span></span>
@@ -402,82 +401,7 @@
     <a href="https://osf.io/t3nbf_v1" target="_blank" rel="noopener" data-i18n="nav.paper">Paper</a>
   </div>
 
-  <!-- Language menu -->
-  <div class="lang-menu" id="langMenu">
-    <button class="lang-option active" type="button" onclick="switchLang('ja')">日本語</button>
-    <button class="lang-option" type="button" onclick="switchLang('en')">English</button>
-    <button class="lang-option" type="button" onclick="switchLang('zh-CN')">简体中文</button>
-    <button class="lang-option" type="button" onclick="switchLang('zh-TW')">繁體中文</button>
-    <button class="lang-option" type="button" onclick="switchLang('ko')">한국어</button>
-    <button class="lang-option" type="button" onclick="switchLang('th')">ไทย</button>
-    <button class="lang-option" type="button" onclick="switchLang('my')">မြန်မာစာ</button>
-    <button class="lang-option" type="button" onclick="switchLang('ar')">العربية</button>
-    <button class="lang-option" type="button" onclick="switchLang('vi')">Tiếng Việt</button>
-    <button class="lang-option" type="button" onclick="switchLang('de')">Deutsch</button>
-    <button class="lang-option" type="button" onclick="switchLang('fr')">Français</button>
-  </div>
-
   <script src="script.js"></script>
-  <script src="translations.js?v=5"></script>
-  <script>
-  /* ===== Global Language Functions ===== */
-  function toggleLangMenu() {
-    var menu = document.getElementById('langMenu');
-    var btn = document.getElementById('langBtn');
-    if (!menu || !btn) return;
-    var r = btn.getBoundingClientRect();
-    menu.style.top = (r.bottom + 8) + 'px';
-    menu.style.right = (window.innerWidth - r.right) + 'px';
-    menu.style.left = 'auto';
-    menu.classList.toggle('open');
-  }
-
-  function switchLang(lang) {
-    // Apply translations
-    if (typeof translations !== 'undefined' && translations[lang]) {
-      var dict = translations[lang];
-      var els = document.querySelectorAll('[data-i18n]');
-      for (var i = 0; i < els.length; i++) {
-        var key = els[i].getAttribute('data-i18n');
-        if (dict[key] != null) els[i].innerHTML = dict[key];
-      }
-    }
-    // RTL
-    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-    document.documentElement.lang = lang;
-    // Update label
-    var label = document.getElementById('langLabel');
-    if (label && typeof langNames !== 'undefined') label.textContent = langNames[lang] || lang;
-    // Save
-    try { localStorage.setItem('h-village-lang', lang); } catch (e) {}
-    // Close menu
-    var menu = document.getElementById('langMenu');
-    if (menu) menu.classList.remove('open');
-    // Update active
-    var opts = menu ? menu.querySelectorAll('.lang-option') : [];
-    for (var j = 0; j < opts.length; j++) {
-      var txt = opts[j].textContent;
-      opts[j].className = 'lang-option' + (opts[j].textContent === (typeof langNames !== 'undefined' && langNames[lang] ? langNames[lang] : lang) ? ' active' : '');
-    }
-  }
-
-  // Close menu on outside click
-  document.addEventListener('click', function (e) {
-    var menu = document.getElementById('langMenu');
-    var btn = document.getElementById('langBtn');
-    if (menu && btn && !btn.contains(e.target) && !menu.contains(e.target)) {
-      menu.classList.remove('open');
-    }
-  });
-
-  // Restore saved language on load
-  (function () {
-    var saved;
-    try { saved = localStorage.getItem('h-village-lang'); } catch (e) {}
-    if (saved && saved !== 'ja' && typeof translations !== 'undefined' && translations[saved]) {
-      switchLang(saved);
-    }
-  })();
-  </script>
+  <script src="translations.js?v=6"></script>
 </body>
 </html>

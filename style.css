@@ -55,7 +55,7 @@ img{max-width:100%;display:block}
 .lang-btn svg{flex-shrink:0;width:15px;height:15px}
 #langLabel{display:none}
 @media(min-width:768px){#langLabel{display:inline}.lang-btn{padding:6px 14px}}
-.lang-menu{position:fixed;min-width:150px;max-height:360px;overflow-y:auto;background:rgba(20,20,20,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:6px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .25s ease;z-index:9999}
+.lang-menu{position:absolute;top:100%;right:0;margin-top:8px;min-width:150px;max-height:360px;overflow-y:auto;background:rgba(20,20,20,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:6px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .25s ease;z-index:9999}
 .lang-menu.open{opacity:1;visibility:visible;transform:translateY(0)}
 .lang-option{display:block;width:100%;text-align:left;background:none;border:none;color:rgba(255,255,255,.55);font-family:var(--ff);font-size:.8125rem;padding:10px 14px;border-radius:10px;cursor:pointer;transition:all .2s ease}
 .lang-option:hover{color:var(--wh);background:rgba(255,255,255,.08)}
