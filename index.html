@@ -29,8 +29,10 @@
         <li><a href="#year2" data-i18n="nav.year2">Year 2</a></li>
         <li><a href="#team" data-i18n="nav.team">Team</a></li>
         <li><a href="https://osf.io/t3nbf_v1" class="nav-cta" target="_blank" rel="noopener" data-i18n="nav.paper">Paper</a></li>
+        <li><button class="lang-btn" id="langBtn" type="button"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M1.5 8h13M8 1.5C9.5 3.5 10.5 5.5 10.5 8s-1 4.5-2.5 6.5C6.5 12.5 5.5 10.5 5.5 8S6.5 3.5 8 1.5z" stroke="currentColor" stroke-width="1.2"/></svg><span id="langLabel">日本語</span></button></li>
       </ul>
       <div class="nav-right">
+        <button class="lang-btn lang-btn-mobile" id="langBtnMobile" type="button"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M1.5 8h13M8 1.5C9.5 3.5 10.5 5.5 10.5 8s-1 4.5-2.5 6.5C6.5 12.5 5.5 10.5 5.5 8S6.5 3.5 8 1.5z" stroke="currentColor" stroke-width="1.2"/></svg></button>
         <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu">
           <span></span>
           <span></span>
@@ -401,20 +403,32 @@
     <a href="https://osf.io/t3nbf_v1" target="_blank" rel="noopener" data-i18n="nav.paper">Paper</a>
   </div>
 
+  <!-- Language menu -->
+  <div class="lang-menu" id="langMenu">
+    <button class="lang-option active" data-lang="ja" type="button">日本語</button>
+    <button class="lang-option" data-lang="en" type="button">English</button>
+    <button class="lang-option" data-lang="zh-CN" type="button">简体中文</button>
+    <button class="lang-option" data-lang="zh-TW" type="button">繁體中文</button>
+    <button class="lang-option" data-lang="ko" type="button">한국어</button>
+    <button class="lang-option" data-lang="th" type="button">ไทย</button>
+    <button class="lang-option" data-lang="my" type="button">မြန်မာစာ</button>
+    <button class="lang-option" data-lang="ar" type="button">العربية</button>
+    <button class="lang-option" data-lang="vi" type="button">Tiếng Việt</button>
+    <button class="lang-option" data-lang="de" type="button">Deutsch</button>
+    <button class="lang-option" data-lang="fr" type="button">Français</button>
+  </div>
+
   <script src="script.js"></script>
   <script src="translations.js?v=3"></script>
   <script>
   /* ===== Language Switcher ===== */
   (function () {
-    var T = (typeof translations !== 'undefined') ? translations : {};
-    var LN = (typeof langNames !== 'undefined') ? langNames : {
-      ja:'\u65e5\u672c\u8a9e',en:'English','zh-CN':'\u7b80\u4f53\u4e2d\u6587',
-      'zh-TW':'\u7e41\u9ad4\u4e2d\u6587',ko:'\ud55c\uad6d\uc5b4',th:'\u0e44\u0e17\u0e22',
-      my:'\u1019\u103c\u1014\u103a\u1019\u102c\u1005\u102c',ar:'\u0627\u0644\u0639\u0631\u0628\u064a\u0629',
-      vi:'Ti\u1ebfng Vi\u1ec7t',de:'Deutsch',fr:'Fran\u00e7ais'
-    };
+    var menu = document.getElementById('langMenu');
+    var btns = [document.getElementById('langBtn'), document.getElementById('langBtnMobile')];
+    if (!menu) return;
 
     function applyLang(lang) {
+      var T = (typeof translations !== 'undefined') ? translations : {};
       var dict = T[lang];
       if (!dict) return;
       var els = document.querySelectorAll('[data-i18n]');
@@ -424,76 +438,56 @@
       }
       document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
       document.documentElement.lang = lang;
-      var label = document.getElementById('langLabel');
-      if (label) label.textContent = LN[lang] || lang;
+      var LN = (typeof langNames !== 'undefined') ? langNames : {};
+      var labels = document.querySelectorAll('#langLabel');
+      for (var i = 0; i < labels.length; i++) labels[i].textContent = LN[lang] || lang;
       try { localStorage.setItem('h-village-lang', lang); } catch (e) {}
     }
 
-    var navRight = document.querySelector('.nav-right');
-    if (!navRight) return;
-
-    var btn = document.createElement('button');
-    btn.className = 'lang-btn';
-    btn.id = 'langBtn';
-    btn.setAttribute('type', 'button');
-    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M1.5 8h13M8 1.5C9.5 3.5 10.5 5.5 10.5 8s-1 4.5-2.5 6.5C6.5 12.5 5.5 10.5 5.5 8S6.5 3.5 8 1.5z" stroke="currentColor" stroke-width="1.2"/></svg><span id="langLabel">\u65e5\u672c\u8a9e</span>';
-
-    var menu = document.createElement('div');
-    menu.className = 'lang-menu';
-
-    var codes = ['ja','en','zh-CN','zh-TW','ko','th','my','ar','vi','de','fr'];
-    for (var i = 0; i < codes.length; i++) {
-      (function (code) {
-        var item = document.createElement('button');
-        item.className = 'lang-option';
-        item.setAttribute('type', 'button');
-        item.setAttribute('data-lang', code);
-        item.textContent = LN[code] || code;
-        item.addEventListener('click', function () {
-          applyLang(code);
-          menu.classList.remove('open');
-          var all = menu.querySelectorAll('.lang-option');
-          for (var j = 0; j < all.length; j++) {
-            all[j].classList.toggle('active', all[j].getAttribute('data-lang') === code);
-          }
-        });
-        menu.appendChild(item);
-      })(codes[i]);
-    }
-
-    btn.addEventListener('click', function (e) {
+    function toggleMenu(e) {
       e.stopPropagation();
-      var r = btn.getBoundingClientRect();
-      menu.style.position = 'fixed';
+      var r = (e.currentTarget || e.target).getBoundingClientRect();
       menu.style.top = (r.bottom + 8) + 'px';
       menu.style.right = (window.innerWidth - r.right) + 'px';
       menu.style.left = 'auto';
       menu.classList.toggle('open');
-    });
-
-    document.addEventListener('click', function () {
-      menu.classList.remove('open');
-    });
-
-    var navToggle = document.getElementById('navToggle');
-    if (navToggle) {
-      navRight.insertBefore(btn, navToggle);
-    } else {
-      navRight.appendChild(btn);
     }
-    document.body.appendChild(menu);
 
+    // Attach toggle to both desktop and mobile buttons
+    for (var b = 0; b < btns.length; b++) {
+      if (btns[b]) btns[b].addEventListener('click', toggleMenu);
+    }
+
+    // Attach click to each option
+    var opts = menu.querySelectorAll('.lang-option');
+    for (var i = 0; i < opts.length; i++) {
+      opts[i].addEventListener('click', function () {
+        var code = this.getAttribute('data-lang');
+        applyLang(code);
+        menu.classList.remove('open');
+        for (var j = 0; j < opts.length; j++) {
+          opts[j].classList.toggle('active', opts[j].getAttribute('data-lang') === code);
+        }
+      });
+    }
+
+    // Close on outside click
+    document.addEventListener('click', function (e) {
+      var isBtn = false;
+      for (var b = 0; b < btns.length; b++) {
+        if (btns[b] && btns[b].contains(e.target)) isBtn = true;
+      }
+      if (!isBtn && !menu.contains(e.target)) menu.classList.remove('open');
+    });
+
+    // Restore saved language
     var saved;
     try { saved = localStorage.getItem('h-village-lang'); } catch (e) {}
-    if (saved && T[saved]) {
+    if (saved && typeof translations !== 'undefined' && translations[saved]) {
       applyLang(saved);
-      var all = menu.querySelectorAll('.lang-option');
-      for (var j = 0; j < all.length; j++) {
-        all[j].classList.toggle('active', all[j].getAttribute('data-lang') === saved);
+      for (var j = 0; j < opts.length; j++) {
+        opts[j].classList.toggle('active', opts[j].getAttribute('data-lang') === saved);
       }
-    } else {
-      var ja = menu.querySelector('[data-lang="ja"]');
-      if (ja) ja.classList.add('active');
     }
   })();
   </script>
