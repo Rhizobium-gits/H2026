@@ -951,47 +951,104 @@ var translations = {
 };
 
 var langNames = {
-ja: '\u65e5\u672c\u8a9e',
-en: 'English',
-'zh-CN': '\u7b80\u4f53\u4e2d\u6587',
-'zh-TW': '\u7e41\u9ad4\u4e2d\u6587',
-ko: '\ud55c\uad6d\uc5b4',
-th: '\u0e44\u0e17\u0e22',
-my: '\u1019\u103c\u1014\u103a\u1019\u102c\u1005\u102c',
-ar: '\u0627\u0644\u0639\u0631\u0628\u064a\u0629',
-vi: 'Ti\u1ebfng Vi\u1ec7t',
-de: 'Deutsch',
-fr: 'Fran\u00e7ais',
+  ja: '\u65e5\u672c\u8a9e',
+  en: 'English',
+  'zh-CN': '\u7b80\u4f53\u4e2d\u6587',
+  'zh-TW': '\u7e41\u9ad4\u4e2d\u6587',
+  ko: '\ud55c\uad6d\uc5b4',
+  th: '\u0e44\u0e17\u0e22',
+  my: '\u1019\u103c\u1014\u103a\u1019\u102c\u1005\u102c',
+  ar: '\u0627\u0644\u0639\u0631\u0628\u064a\u0629',
+  vi: 'Ti\u1ebfng Vi\u1ec7t',
+  de: 'Deutsch',
+  fr: 'Fran\u00e7ais'
 };
 
 function applyLang(lang) {
-var dict = translations[lang];
-if (!dict) return;
-
-document.querySelectorAll('[data-i18n]').forEach(function (el) {
-  var key = el.getAttribute('data-i18n');
-  if (dict[key] != null) {
-    el.innerHTML = dict[key];
-  }
-});
-
-// RTL for Arabic
-document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-document.documentElement.lang = lang;
-
-// Update active label
-var label = document.getElementById('langLabel');
-if (label) label.textContent = langNames[lang] || lang;
-
-// Save preference
-try { localStorage.setItem('h-village-lang', lang); } catch (e) {}
+  var dict = translations[lang];
+  if (!dict) return;
+  document.querySelectorAll('[data-i18n]').forEach(function (el) {
+    var key = el.getAttribute('data-i18n');
+    if (dict[key] != null) el.innerHTML = dict[key];
+  });
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.documentElement.lang = lang;
+  var label = document.getElementById('langLabel');
+  if (label) label.textContent = langNames[lang] || lang;
+  try { localStorage.setItem('h-village-lang', lang); } catch (e) {}
 }
 
-// Restore saved language on load
+// Build lang switcher UI via DOM (original working approach)
 (function () {
-var saved;
-try { saved = localStorage.getItem('h-village-lang'); } catch (e) {}
-if (saved && translations[saved]) {
-  applyLang(saved);
-}
+  var navRight = document.querySelector('.nav-right');
+  if (!navRight) return;
+
+  // Create button
+  var btn = document.createElement('button');
+  btn.className = 'lang-btn';
+  btn.id = 'langBtn';
+  btn.setAttribute('type', 'button');
+  btn.setAttribute('aria-label', 'Language');
+  btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M1.5 8h13M8 1.5C9.5 3.5 10.5 5.5 10.5 8s-1 4.5-2.5 6.5C6.5 12.5 5.5 10.5 5.5 8S6.5 3.5 8 1.5z" stroke="currentColor" stroke-width="1.2"/></svg><span id="langLabel">\u65e5\u672c\u8a9e</span>';
+
+  // Create menu — append to body so it's never clipped
+  var menu = document.createElement('div');
+  menu.className = 'lang-menu';
+  menu.id = 'langMenu';
+
+  var codes = ['ja','en','zh-CN','zh-TW','ko','th','my','ar','vi','de','fr'];
+  codes.forEach(function (code) {
+    var item = document.createElement('button');
+    item.className = 'lang-option';
+    item.setAttribute('type', 'button');
+    item.setAttribute('data-lang', code);
+    item.textContent = langNames[code] || code;
+    item.addEventListener('click', function () {
+      applyLang(code);
+      menu.classList.remove('open');
+      menu.querySelectorAll('.lang-option').forEach(function (o) {
+        o.classList.toggle('active', o.getAttribute('data-lang') === code);
+      });
+    });
+    menu.appendChild(item);
+  });
+
+  // Toggle menu on button click
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var r = btn.getBoundingClientRect();
+    menu.style.position = 'fixed';
+    menu.style.top = (r.bottom + 8) + 'px';
+    menu.style.right = (window.innerWidth - r.right) + 'px';
+    menu.style.left = 'auto';
+    menu.classList.toggle('open');
+  });
+
+  // Close on outside click
+  document.addEventListener('click', function () {
+    menu.classList.remove('open');
+  });
+
+  // Insert button before nav toggle
+  var navToggle = document.getElementById('navToggle');
+  if (navToggle) {
+    navRight.insertBefore(btn, navToggle);
+  } else {
+    navRight.appendChild(btn);
+  }
+  // Append menu to body (avoids all clipping/stacking issues)
+  document.body.appendChild(menu);
+
+  // Restore saved language
+  var saved;
+  try { saved = localStorage.getItem('h-village-lang'); } catch (e) {}
+  if (saved && translations[saved]) {
+    applyLang(saved);
+    menu.querySelectorAll('.lang-option').forEach(function (o) {
+      o.classList.toggle('active', o.getAttribute('data-lang') === saved);
+    });
+  } else {
+    var ja = menu.querySelector('[data-lang="ja"]');
+    if (ja) ja.classList.add('active');
+  }
 })();
