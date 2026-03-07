@@ -61,14 +61,13 @@
     });
   });
 
-  // ---- Hero parallax zoom ----
-  const heroImg = document.getElementById('heroImg');
-  if (heroImg) {
-    const hero = document.getElementById('hero');
+  // ---- Hero overlay fade on scroll ----
+  const heroOverlay = document.querySelector('.hero-overlay');
+  const hero = document.getElementById('hero');
+  if (heroOverlay && hero) {
     window.addEventListener('scroll', () => {
       const r = Math.min(window.scrollY / hero.offsetHeight, 1);
-      heroImg.style.transform = 'scale(' + (1.08 + r * 0.15) + ')';
-      heroImg.style.opacity = 1 - r * 0.4;
+      heroOverlay.style.opacity = 0.5 + r * 0.5;
     }, { passive: true });
   }
 

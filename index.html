@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/favicon.jpg" type="image/jpeg">
+  <link rel="apple-touch-icon" href="images/favicon.jpg">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -38,7 +40,13 @@
   <!-- ========== HERO: Full-screen cinematic ========== -->
   <section class="hero" id="hero">
     <div class="hero-media">
-      <img src="images/slide04.jpg" alt="H Village" class="hero-media-img" id="heroImg">
+      <iframe id="heroVideo"
+        src="https://www.youtube.com/embed/ADRZTYirjng?autoplay=1&mute=1&loop=1&playlist=ADRZTYirjng&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        title="H Village"
+      ></iframe>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -94,7 +102,7 @@
 
   <!-- ========== FULL IMAGE: Campus aerial (scroll zoom) ========== -->
   <section class="full-img" id="fullImg1">
-    <img src="images/slide01.jpg" alt="SFC Campus" loading="lazy" class="zoom-img">
+    <img src="images/DSCF2115-1.jpg" alt="SFC Campus with Mt. Fuji" loading="lazy" class="zoom-img">
     <div class="full-img-overlay"></div>
     <div class="full-img-text reveal">
       <span>Keio University SFC</span>
@@ -152,17 +160,33 @@
       <span class="sec-tag sec-tag-dark reveal">03 &mdash; Village</span>
       <h2 class="sec-heading sec-heading-dark reveal">Heta <span class="grad-text-dark">Village</span>。</h2>
       <p class="sec-sub reveal">4棟構成の学生寮。それぞれが異なるコミュニティ文化を育む。</p>
+      <div class="village-links reveal">
+        <a href="https://h-village.sfc.keio.ac.jp" class="btn-pill btn-pill-dark" target="_blank" rel="noopener">公式サイト <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8m0 0H5m7 0v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="https://sfcclip.net/2023/05/58160/" class="btn-pill btn-pill-outline-dark" target="_blank" rel="noopener">SFC CLIP 記事 <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8m0 0H5m7 0v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
     </div>
 
     <!-- Bento grid gallery -->
     <div class="bento reveal">
       <div class="bento-item bento-wide">
+        <img src="images/keio-fujisawa_20230330-7.jpg" alt="H Village 航空写真" loading="lazy">
+        <div class="bento-label">H Village 航空写真</div>
+      </div>
+      <div class="bento-item bento-tall">
+        <img src="images/img_48_b5c0cf62-70db-47d6-a1f4-c1b89d3d7ca9.jpg" alt="棟間の広場" loading="lazy">
+        <div class="bento-label">棟間の広場</div>
+      </div>
+      <div class="bento-item">
         <img src="images/slide02.jpg" alt="共用棟外観" loading="lazy">
         <div class="bento-label">共用棟 外観</div>
       </div>
-      <div class="bento-item bento-tall">
+      <div class="bento-item">
         <img src="images/slide03.jpg" alt="ダイニング" loading="lazy">
         <div class="bento-label">共用ダイニング</div>
+      </div>
+      <div class="bento-item bento-wide">
+        <img src="images/e9d814aa94524fa52d46aef801815d42.png.webp" alt="H Village 3Dマップ" loading="lazy">
+        <div class="bento-label">H Village 3D マップ</div>
       </div>
       <div class="bento-item">
         <img src="images/slide05.jpg" alt="パプリカ" loading="lazy">
@@ -172,7 +196,7 @@
         <img src="images/Fsc-ypgaIAExCfU.jpg" alt="エントランス" loading="lazy">
         <div class="bento-label">Welcome to H Village</div>
       </div>
-      <div class="bento-item bento-wide">
+      <div class="bento-item">
         <img src="images/slide04.jpg" alt="中庭" loading="lazy">
         <div class="bento-label">棟間の中庭</div>
       </div>
@@ -185,7 +209,7 @@
 
   <!-- ========== FULL IMAGE: Courtyard cinematic ========== -->
   <section class="full-img full-img-short" id="fullImg2">
-    <img src="images/slide02.jpg" alt="H Village" loading="lazy" class="zoom-img">
+    <img src="images/keio-fujisawa_20230330-7.jpg" alt="H Village aerial" loading="lazy" class="zoom-img">
     <div class="full-img-overlay full-img-overlay-heavy"></div>
     <div class="full-img-text reveal">
       <h3>4棟が中庭を囲み、<br>ひとつのコミュニティを形成する。</h3>
