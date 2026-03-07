@@ -147,7 +147,7 @@ img{max-width:100%;display:block}
 .card-grid-4{display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:64px}
 @media(min-width:640px){.card-grid-4{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1024px){.card-grid-4{grid-template-columns:repeat(4,1fr)}}
-.glass-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:32px 24px;transition:border-color .4s,transform .6s cubic-bezier(.25,.46,.45,.94),box-shadow .6s,border-radius 2s ease;position:relative;overflow:hidden;border-radius:var(--r-md);animation:softBreathe 8s ease-in-out infinite;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.glass-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:32px 24px;transition:border-color .4s,transform .6s cubic-bezier(.25,.46,.45,.94),box-shadow .6s;position:relative;overflow:hidden;animation:softBreathe 8s ease-in-out infinite;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .glass-card:nth-child(2){animation-delay:-2s}
 .glass-card:nth-child(3){animation-delay:-4s}
 .glass-card:nth-child(4){animation-delay:-6s}
@@ -234,10 +234,11 @@ img{max-width:100%;display:block}
 
 /* === SHARED BREATHING (subtle for text cards) === */
 @keyframes softBreathe{
-  0%{transform:scale(1) translateY(0);box-shadow:0 0 0 0 rgba(100,180,255,0)}
-  30%{transform:scale(1.004,.998) translateY(-.5px);box-shadow:0 0 12px 1px rgba(100,180,255,.03)}
-  60%{transform:scale(.998,1.003) translateY(.3px);box-shadow:0 0 8px 0 rgba(100,180,255,.02)}
-  100%{transform:scale(1) translateY(0);box-shadow:0 0 0 0 rgba(100,180,255,0)}
+  0%{transform:scale(1) translateY(0);border-radius:18px 20px 20px 18px;box-shadow:0 0 0 0 rgba(100,180,255,0)}
+  20%{transform:scale(1.004,.998) translateY(-.4px);border-radius:20px 18px 19px 21px;box-shadow:0 0 10px 1px rgba(100,180,255,.03)}
+  45%{transform:scale(.998,1.004) translateY(.3px);border-radius:19px 21px 18px 20px;box-shadow:0 0 8px 0 rgba(100,180,255,.02)}
+  70%{transform:scale(1.003,.999) translateY(-.2px);border-radius:21px 19px 20px 18px;box-shadow:0 0 6px 1px rgba(100,180,255,.02)}
+  100%{transform:scale(1) translateY(0);border-radius:18px 20px 20px 18px;box-shadow:0 0 0 0 rgba(100,180,255,0)}
 }
 
 /* === DRAG TEAR SYSTEM (bento items) === */
