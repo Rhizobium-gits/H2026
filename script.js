@@ -93,9 +93,10 @@
     onScroll();
   });
 
-  // ---- Bento grid hover tilt (desktop only) ----
-  if (window.innerWidth > 768) {
-    document.querySelectorAll('.bento-item').forEach((card) => {
+  // ---- Bento cell tap splash ----
+  document.querySelectorAll('.bento-item').forEach((card) => {
+    // Desktop hover tilt
+    if (window.innerWidth > 768) {
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width - 0.5;
@@ -105,7 +106,41 @@
       card.addEventListener('mouseleave', () => {
         card.style.transform = '';
       });
-    });
-  }
+    }
+
+    // Tap / click — viscous splash
+    function cellSplash(e) {
+      const rect = card.getBoundingClientRect();
+      const touch = e.touches ? e.touches[0] : e;
+      const x = touch.clientX - rect.left;
+      const y = touch.clientY - rect.top;
+      const size = Math.max(rect.width, rect.height) * 1.6;
+
+      // Create ripple element
+      const ripple = document.createElement('div');
+      ripple.className = 'cell-ripple';
+      ripple.style.width = size + 'px';
+      ripple.style.height = size + 'px';
+      ripple.style.left = (x - size / 2) + 'px';
+      ripple.style.top = (y - size / 2) + 'px';
+      card.appendChild(ripple);
+
+      // Trigger jiggle + bounce
+      card.classList.remove('cell-tapped');
+      void card.offsetWidth; // force reflow
+      card.classList.add('cell-tapped');
+
+      // Cleanup
+      setTimeout(() => {
+        ripple.remove();
+        card.classList.remove('cell-tapped');
+      }, 850);
+    }
+
+    card.addEventListener('click', cellSplash);
+    card.addEventListener('touchstart', function(e) {
+      cellSplash(e);
+    }, { passive: true });
+  });
 
 })();
