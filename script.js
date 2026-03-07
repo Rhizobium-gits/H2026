@@ -41,20 +41,16 @@
 
   // ---- Mobile nav ----
   const toggle = document.getElementById('navToggle');
-  const links = document.getElementById('navLinks');
-  const navEl = document.getElementById('nav');
+  const mobileMenu = document.getElementById('mobileMenu');
   toggle.addEventListener('click', () => {
     toggle.classList.toggle('active');
-    links.classList.toggle('open');
-    const isOpen = links.classList.contains('open');
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-    navEl.classList.toggle('menu-open', isOpen);
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
   });
-  links.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
+  mobileMenu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
     toggle.classList.remove('active');
-    links.classList.remove('open');
+    mobileMenu.classList.remove('open');
     document.body.style.overflow = '';
-    navEl.classList.remove('menu-open');
   }));
 
   // ---- Smooth anchor scroll ----

@@ -990,53 +990,41 @@
     try { localStorage.setItem('h-village-lang', lang); } catch (e) {}
   }
 
-  // Populate language menu — portal to body so it's never clipped
+  // Language switcher — all buttons already in HTML
   function initLangSwitcher() {
     var btn = document.getElementById('langBtn');
-    var menuEl = document.getElementById('langMenu');
-    if (!btn || !menuEl) { console.warn('Lang switcher: btn or menu not found'); return; }
+    var menu = document.getElementById('langMenu');
+    if (!btn || !menu) return;
 
-    // Move menu to body so no parent can clip it
-    document.body.appendChild(menuEl);
-
-    var codes = Object.keys(langNames);
-    for (var i = 0; i < codes.length; i++) {
-      (function(code) {
-        var item = document.createElement('button');
-        item.className = 'lang-option';
-        item.type = 'button';
-        item.setAttribute('data-lang', code);
-        item.textContent = langNames[code];
-        item.addEventListener('click', function (e) {
-          e.stopPropagation();
-          applyLang(code);
-          menuEl.classList.remove('open');
-          var opts = menuEl.querySelectorAll('.lang-option');
-          for (var j = 0; j < opts.length; j++) {
-            opts[j].classList.toggle('active', opts[j].getAttribute('data-lang') === code);
-          }
-        });
-        menuEl.appendChild(item);
-      })(codes[i]);
+    // Attach click to each pre-existing option button
+    var opts = menu.querySelectorAll('.lang-option');
+    for (var i = 0; i < opts.length; i++) {
+      opts[i].addEventListener('click', function (e) {
+        e.stopPropagation();
+        var code = this.getAttribute('data-lang');
+        applyLang(code);
+        menu.classList.remove('open');
+        for (var j = 0; j < opts.length; j++) {
+          opts[j].classList.toggle('active', opts[j].getAttribute('data-lang') === code);
+        }
+      });
     }
 
-    function positionMenu() {
-      var r = btn.getBoundingClientRect();
-      menuEl.style.top = (r.bottom + 8) + 'px';
-      menuEl.style.right = (window.innerWidth - r.right) + 'px';
-      menuEl.style.left = 'auto';
-    }
-
+    // Toggle menu on button click, position it below button
     btn.addEventListener('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
-      positionMenu();
-      menuEl.classList.toggle('open');
+      var r = btn.getBoundingClientRect();
+      menu.style.top = (r.bottom + 8) + 'px';
+      menu.style.right = (window.innerWidth - r.right) + 'px';
+      menu.style.left = 'auto';
+      menu.classList.toggle('open');
     });
 
+    // Close on outside click
     document.addEventListener('click', function (e) {
-      if (!menuEl.contains(e.target) && !btn.contains(e.target)) {
-        menuEl.classList.remove('open');
+      if (!menu.contains(e.target) && !btn.contains(e.target)) {
+        menu.classList.remove('open');
       }
     });
 
@@ -1045,7 +1033,6 @@
     try { saved = localStorage.getItem('h-village-lang'); } catch (e) {}
     if (saved && translations[saved]) {
       applyLang(saved);
-      var opts = menu.querySelectorAll('.lang-option');
       for (var j = 0; j < opts.length; j++) {
         opts[j].classList.toggle('active', opts[j].getAttribute('data-lang') === saved);
       }
@@ -1055,10 +1042,5 @@
     }
   }
 
-  // Run when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initLangSwitcher);
-  } else {
-    initLangSwitcher();
-  }
+  initLangSwitcher();
 })();

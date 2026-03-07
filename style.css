@@ -21,7 +21,7 @@ img{max-width:100%;display:block}
 /* === NAV === */
 .nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:14px 20px;transition:all .5s var(--ease)}
 .nav.scrolled{background:rgba(10,10,10,.92);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);padding:8px 20px}
-.nav.menu-open{backdrop-filter:none;-webkit-backdrop-filter:none;background:transparent}
+/* removed — menu now outside nav */
 .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:50px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:100px;padding:0 4px 0 20px;overflow:visible}
 .nav.scrolled .nav-inner{background:rgba(255,255,255,.08)}
 .nav-logo{font-size:.8125rem;font-weight:600;display:flex;align-items:center;gap:8px;white-space:nowrap}
@@ -43,9 +43,10 @@ img{max-width:100%;display:block}
 .nav-toggle.active span:nth-child(2){opacity:0}
 .nav-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-/* Fullscreen mobile menu */
-.nav-links.open{display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(8,8,8,.98);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);align-items:center;justify-content:center;gap:28px;z-index:999}
-.nav-links.open a{font-size:1.5rem;color:var(--wh)!important;background:none!important}
+/* Fullscreen mobile menu — independent overlay outside nav */
+.mobile-menu{display:none;flex-direction:column;align-items:center;justify-content:center;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(8,8,8,.98);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);gap:28px;z-index:9990}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:1.5rem;color:var(--wh);text-decoration:none;font-family:var(--ff);font-weight:500}
 
 /* === LANGUAGE SWITCHER === */
 .lang-switcher{position:relative;z-index:1002}
