@@ -203,4 +203,16 @@
     card.addEventListener('touchend', onEnd);
   });
 
+  // ---- Tap jiggle on cards & text blocks ----
+  document.querySelectorAll('.glass-card,.feat-card,.member,.quote-box,.paper-box,.col-text,.findings-hero,.img-reveal,.full-img-text,.sec-heading,.sec-sub,.num').forEach((el) => {
+    el.addEventListener('click', () => {
+      el.classList.remove('tap-jiggle');
+      void el.offsetWidth;
+      el.classList.add('tap-jiggle');
+    });
+    el.addEventListener('animationend', () => {
+      el.classList.remove('tap-jiggle');
+    });
+  });
+
 })();
