@@ -982,79 +982,59 @@ function applyLang(lang) {
 }
 
 function initLangSwitcher() {
-  var wrapper = document.createElement('div');
-  wrapper.className = 'lang-switcher';
+  var menu = document.getElementById('langMenu');
+  var btn = document.getElementById('langBtn');
+  var mobileBtn = document.getElementById('langBtnMobile');
+  if (!menu || !btn) return;
 
-  var btn = document.createElement('button');
-  btn.className = 'lang-btn';
-  btn.setAttribute('aria-label', 'Language');
-  btn.setAttribute('type', 'button');
-  btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M1.5 8h13M8 1.5C9.5 3.5 10.5 5.5 10.5 8s-1 4.5-2.5 6.5C6.5 12.5 5.5 10.5 5.5 8S6.5 3.5 8 1.5z" stroke="currentColor" stroke-width="1.2"/></svg><span id="langLabel">\u65e5\u672c\u8a9e</span>';
-
-  var menu = document.createElement('div');
-  menu.className = 'lang-menu';
-
-  Object.keys(langNames).forEach(function (code) {
-    var item = document.createElement('button');
-    item.className = 'lang-option';
-    item.setAttribute('data-lang', code);
-    item.setAttribute('type', 'button');
-    item.textContent = langNames[code];
-    item.addEventListener('click', function () {
-      applyLang(code);
-      menu.classList.remove('open');
-      menu.querySelectorAll('.lang-option').forEach(function (o) {
-        o.classList.toggle('active', o.getAttribute('data-lang') === code);
+  // Language option clicks
+  var options = menu.querySelectorAll('.lang-option');
+  for (var i = 0; i < options.length; i++) {
+    (function (opt) {
+      opt.addEventListener('click', function () {
+        var lang = opt.getAttribute('data-lang');
+        applyLang(lang);
+        menu.classList.remove('open');
+        for (var j = 0; j < options.length; j++) {
+          options[j].classList.toggle('active', options[j].getAttribute('data-lang') === lang);
+        }
       });
-    });
-    menu.appendChild(item);
-  });
+    })(options[i]);
+  }
 
+  // Toggle menu
   btn.addEventListener('click', function (e) {
     e.stopPropagation();
     menu.classList.toggle('open');
   });
 
+  // Mobile button also toggles same menu
+  if (mobileBtn) {
+    mobileBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      // Position menu near mobile button
+      var r = mobileBtn.getBoundingClientRect();
+      menu.style.position = 'fixed';
+      menu.style.top = (r.bottom + 8) + 'px';
+      menu.style.right = (window.innerWidth - r.right) + 'px';
+      menu.style.left = 'auto';
+      menu.classList.toggle('open');
+    });
+  }
+
+  // Close on outside click
   document.addEventListener('click', function () {
     menu.classList.remove('open');
   });
 
-  wrapper.appendChild(btn);
-  wrapper.appendChild(menu);
-
-  // Desktop: insert as <li> between Team and Paper in nav-links
-  var paperLi = document.querySelector('.nav-links .nav-cta');
-  if (paperLi) paperLi = paperLi.parentElement;
-  var navLinks = document.querySelector('.nav-links');
-  if (navLinks && paperLi) {
-    var li = document.createElement('li');
-    li.appendChild(wrapper);
-    navLinks.insertBefore(li, paperLi);
-  }
-
-  // Mobile: clone button into nav-right (before hamburger)
-  var mobileBtn = btn.cloneNode(true);
-  mobileBtn.className = 'lang-btn lang-btn-mobile';
-  mobileBtn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    menu.classList.toggle('open');
-  });
-  var navRight = document.querySelector('.nav-right');
-  var navToggle = document.getElementById('navToggle');
-  if (navRight && navToggle) {
-    navRight.insertBefore(mobileBtn, navToggle);
-  }
-
+  // Restore saved language
   var saved;
   try { saved = localStorage.getItem('h-village-lang'); } catch (e) {}
   if (saved && translations[saved]) {
     applyLang(saved);
-    menu.querySelectorAll('.lang-option').forEach(function (o) {
-      o.classList.toggle('active', o.getAttribute('data-lang') === saved);
-    });
-  } else {
-    var ja = menu.querySelector('[data-lang="ja"]');
-    if (ja) ja.classList.add('active');
+    for (var k = 0; k < options.length; k++) {
+      options[k].classList.toggle('active', options[k].getAttribute('data-lang') === saved);
+    }
   }
 }
 

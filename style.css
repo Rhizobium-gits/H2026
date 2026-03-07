@@ -61,8 +61,8 @@ img{max-width:100%;display:block}
 .lang-option:hover{color:var(--wh);background:rgba(255,255,255,.08)}
 .lang-option.active{color:var(--wh);font-weight:600}
 [dir="rtl"] .lang-menu{right:auto;left:0}
-.lang-btn-mobile{display:flex}
-@media(min-width:768px){.lang-btn-mobile{display:none}}
+.lang-switcher-mobile{display:block}
+@media(min-width:768px){.lang-switcher-mobile{display:none}}
 
 /* === HERO === */
 .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
