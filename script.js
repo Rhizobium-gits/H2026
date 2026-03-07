@@ -89,62 +89,118 @@
     onScroll();
   });
 
-  // ---- Organic tap interaction — all living elements ----
-  const organicTargets = document.querySelectorAll(
-    '.bento-item, .glass-card, .feat-card, .quote-box, .paper-box, .member'
-  );
-
-  organicTargets.forEach((el) => {
-    // Ensure position for ripple
-    if (getComputedStyle(el).position === 'static') {
-      el.style.position = 'relative';
-    }
-
-    // Desktop hover tilt for bento items
-    if (window.innerWidth > 768 && el.classList.contains('bento-item')) {
-      el.addEventListener('mousemove', (e) => {
-        const rect = el.getBoundingClientRect();
+  // ---- Bento: tap splash + drag to tear ----
+  document.querySelectorAll('.bento-item').forEach((card) => {
+    // Desktop hover tilt
+    if (window.innerWidth > 768) {
+      card.addEventListener('mousemove', (e) => {
+        if (card.classList.contains('dragging')) return;
+        const rect = card.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width - 0.5;
         const y = (e.clientY - rect.top) / rect.height - 0.5;
-        el.style.transform = 'perspective(600px) rotateY(' + (x * 6) + 'deg) rotateX(' + (-y * 6) + 'deg) scale(1.02)';
+        card.style.transform = 'perspective(600px) rotateY(' + (x * 6) + 'deg) rotateX(' + (-y * 6) + 'deg) scale(1.02)';
       });
-      el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+      card.addEventListener('mouseleave', () => {
+        if (!card.classList.contains('dragging')) card.style.transform = '';
+      });
     }
 
-    // Tap / click — viscous organic splash
-    function organicSplash(e) {
+    // Tap splash (bento only)
+    function splash(e) {
+      if (card.classList.contains('dragging')) return;
+      const rect = card.getBoundingClientRect();
+      const t = e.touches ? e.touches[0] : e;
+      const x = t.clientX - rect.left, y = t.clientY - rect.top;
+      const size = Math.max(rect.width, rect.height) * 1.6;
+      const rip = document.createElement('div');
+      rip.className = 'cell-ripple';
+      rip.style.cssText = 'width:'+size+'px;height:'+size+'px;left:'+(x-size/2)+'px;top:'+(y-size/2)+'px';
+      card.appendChild(rip);
+      card.classList.remove('cell-tapped');
+      void card.offsetWidth;
+      card.classList.add('cell-tapped');
+      setTimeout(() => { rip.remove(); card.classList.remove('cell-tapped'); }, 850);
+    }
+
+    // Drag to tear
+    let startX, startY, isDragging = false, dragThreshold = 40;
+
+    function onStart(e) {
+      const t = e.touches ? e.touches[0] : e;
+      startX = t.clientX; startY = t.clientY;
+      isDragging = false;
+    }
+
+    function onMove(e) {
+      if (startX === undefined) return;
+      const t = e.touches ? e.touches[0] : e;
+      const dx = t.clientX - startX, dy = t.clientY - startY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist > 15) {
+        isDragging = true;
+        card.classList.add('dragging');
+        // Stretch toward drag direction
+        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+        const stretch = Math.min(dist / 3, 25);
+        card.style.transform = 'translate(' + (dx * 0.3) + 'px,' + (dy * 0.3) + 'px) rotate(' + (angle * 0.02) + 'deg) scale(' + (1 + stretch * 0.003) + ',' + (1 - stretch * 0.002) + ')';
+      }
+
+      // Tear threshold
+      if (dist > dragThreshold * 3 && !card.dataset.torn) {
+        card.dataset.torn = '1';
+        tearOff(card, dx, dy);
+      }
+    }
+
+    function onEnd() {
+      if (isDragging) {
+        card.classList.remove('dragging');
+        card.classList.add('snap-back');
+        card.style.transform = '';
+        setTimeout(() => card.classList.remove('snap-back'), 600);
+      } else if (startX !== undefined) {
+        splash({ clientX: startX, clientY: startY });
+      }
+      startX = startY = undefined;
+      isDragging = false;
+      delete card.dataset.torn;
+    }
+
+    function tearOff(el, dx, dy) {
       const rect = el.getBoundingClientRect();
-      const touch = e.touches ? e.touches[0] : e;
-      const x = touch.clientX - rect.left;
-      const y = touch.clientY - rect.top;
-      const size = Math.max(rect.width, rect.height) * 1.8;
+      const ghost = document.createElement('div');
+      ghost.className = 'tear-ghost';
+      ghost.style.cssText =
+        'left:' + rect.left + 'px;top:' + rect.top + 'px;width:' + rect.width + 'px;height:' + rect.height + 'px;' +
+        'border-radius:' + getComputedStyle(el).borderRadius + ';';
 
-      // Create ripple
-      const ripple = document.createElement('div');
-      ripple.className = el.classList.contains('bento-item') ? 'cell-ripple' : 'organic-ripple';
-      ripple.style.width = size + 'px';
-      ripple.style.height = size + 'px';
-      ripple.style.left = (x - size / 2) + 'px';
-      ripple.style.top = (y - size / 2) + 'px';
-      el.appendChild(ripple);
+      // Clone image inside
+      const img = el.querySelector('img');
+      if (img) {
+        const c = img.cloneNode();
+        c.style.cssText = 'width:100%;height:100%;object-fit:cover;';
+        ghost.appendChild(c);
+      }
 
-      // Trigger animation
-      const tapClass = el.classList.contains('bento-item') ? 'cell-tapped' : 'organic-tapped';
-      el.classList.remove(tapClass);
-      void el.offsetWidth;
-      el.classList.add(tapClass);
+      document.body.appendChild(ghost);
 
-      // Cleanup
-      setTimeout(() => {
-        ripple.remove();
-        el.classList.remove(tapClass);
-      }, 950);
+      // Animate tear piece flying away
+      requestAnimationFrame(() => {
+        ghost.style.transform = 'translate(' + (dx * 1.5) + 'px,' + (dy * 1.5) + 'px) rotate(' + (dx * 0.15) + 'deg) scale(.6)';
+        ghost.classList.add('fade');
+      });
+
+      setTimeout(() => ghost.remove(), 800);
     }
 
-    el.addEventListener('click', organicSplash);
-    el.addEventListener('touchstart', function(e) {
-      organicSplash(e);
-    }, { passive: true });
+    card.addEventListener('mousedown', onStart);
+    card.addEventListener('mousemove', onMove);
+    card.addEventListener('mouseup', onEnd);
+    card.addEventListener('mouseleave', () => { if (isDragging) onEnd(); });
+    card.addEventListener('touchstart', onStart, { passive: true });
+    card.addEventListener('touchmove', onMove, { passive: true });
+    card.addEventListener('touchend', onEnd);
   });
 
 })();

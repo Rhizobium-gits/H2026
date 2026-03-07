@@ -138,23 +138,18 @@ img{max-width:100%;display:block}
 .full-img-text h3{font-size:clamp(1.5rem,4vw,2.75rem);font-weight:800;letter-spacing:-.03em;line-height:1.2}
 
 /* === GLASS CARDS (Findings) === */
-.findings-hero{margin-bottom:48px;overflow:hidden;background:var(--dk3);border-radius:55% 45% 48% 52% / 42% 55% 45% 58%;animation:organicC 15s ease-in-out infinite}
+.findings-hero{margin-bottom:48px;overflow:hidden;background:var(--dk3);border-radius:var(--r-lg);animation:softBreathe 14s ease-in-out infinite}
 .findings-hero img{width:100%;max-height:400px;object-fit:contain;transition:transform .7s var(--ease)}
 .findings-hero:hover img{transform:scale(1.03)}
 .card-grid-4{display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:64px}
 @media(min-width:640px){.card-grid-4{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1024px){.card-grid-4{grid-template-columns:repeat(4,1fr)}}
-.glass-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:32px 24px;transition:border-color .4s,transform .6s cubic-bezier(.25,.46,.45,.94),box-shadow .6s ease;position:relative;overflow:hidden;border-radius:32% 68% 62% 38% / 42% 34% 66% 58%;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.glass-card:nth-child(2){border-radius:68% 32% 38% 62% / 58% 66% 34% 42%}
-.glass-card:nth-child(3){border-radius:42% 58% 68% 32% / 34% 42% 58% 66%}
-.glass-card:nth-child(4){border-radius:58% 42% 32% 68% / 66% 58% 42% 34%}
-.glass-card:nth-child(1){animation:organicA 10s ease-in-out infinite}
-.glass-card:nth-child(2){animation:organicB 12s ease-in-out infinite}
-.glass-card:nth-child(3){animation:organicC 11s ease-in-out infinite}
-.glass-card:nth-child(4){animation:organicD 13s ease-in-out infinite}
-.glass-card::before{content:'';position:absolute;width:120%;height:120%;top:-10%;left:-10%;background:radial-gradient(circle at 30% 40%,rgba(120,200,255,.08) 0%,transparent 60%);opacity:0;transition:opacity .6s;pointer-events:none;z-index:0}
+.glass-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:32px 24px;transition:border-color .4s,transform .6s cubic-bezier(.25,.46,.45,.94),box-shadow .6s,border-radius 2s ease;position:relative;overflow:hidden;border-radius:var(--r-md);animation:softBreathe 8s ease-in-out infinite;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.glass-card:nth-child(2){animation-delay:-2s}
+.glass-card:nth-child(3){animation-delay:-4s}
+.glass-card:nth-child(4){animation-delay:-6s}
 .glass-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.07) 0%,transparent 60%);opacity:0;transition:opacity .4s ease}
-.glass-card:hover{border-color:rgba(255,255,255,.2);transform:scale(1.02);box-shadow:0 8px 40px rgba(100,180,255,.06)}.glass-card:hover::before{opacity:1}.glass-card:hover::after{opacity:1}
+.glass-card:hover{border-color:rgba(255,255,255,.2);transform:scale(1.02);box-shadow:0 8px 40px rgba(100,180,255,.06)}.glass-card:hover::after{opacity:1}
 .card-num{font-size:.6875rem;font-weight:700;color:var(--g500);margin-bottom:18px;position:relative;z-index:1}
 .glass-card h3{font-size:1.1rem;font-weight:700;margin-bottom:8px;position:relative;z-index:1}
 .glass-card h3 small{display:block;font-size:.7rem;font-weight:400;color:var(--g400);margin-top:3px}
@@ -162,7 +157,7 @@ img{max-width:100%;display:block}
 .card-tag{font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--g300);background:rgba(255,255,255,.06);padding:4px 12px;border-radius:100px;position:relative;z-index:1}
 
 /* === QUOTE === */
-.quote-box{position:relative;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:48px;overflow:hidden;border-radius:48% 52% 58% 42% / 38% 62% 38% 62%;animation:organicQuote 14s ease-in-out infinite}
+.quote-box{position:relative;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:48px;overflow:hidden;border-radius:var(--r-lg);animation:softBreathe 10s ease-in-out infinite}
 .quote-line{position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(to bottom,var(--wh),transparent);animation:quotePulse 3s ease-in-out infinite}
 @keyframes quotePulse{0%,100%{opacity:.4;height:60%}50%{opacity:1;height:100%}}
 .quote-box blockquote{font-size:clamp(1.2rem,2.5vw,1.65rem);font-weight:300;line-height:1.6;color:var(--g200);margin-bottom:24px}
@@ -211,91 +206,31 @@ img{max-width:100%;display:block}
 .bento-item.cell-tapped{animation:cellBounce .8s cubic-bezier(.36,.07,.19,.97),cellJiggle .8s cubic-bezier(.36,.07,.19,.97)!important}
 .bento-item.cell-tapped .cell-ripple{animation:cellSplash .8s cubic-bezier(.36,.07,.19,.97) forwards}
 
-/* === ORGANIC LIFE KEYFRAMES === */
-/* Four breathing patterns for all organic elements */
-@keyframes organicA{
-  0%,100%{border-radius:32% 68% 62% 38% / 42% 34% 66% 58%}
-  20%{border-radius:45% 55% 50% 50% / 55% 50% 50% 45%}
-  40%{border-radius:55% 45% 38% 62% / 35% 60% 40% 65%}
-  60%{border-radius:40% 60% 65% 35% / 60% 38% 62% 42%}
-  80%{border-radius:60% 40% 45% 55% / 42% 55% 45% 58%}
-}
-@keyframes organicB{
-  0%,100%{border-radius:68% 32% 38% 62% / 58% 66% 34% 42%}
-  20%{border-radius:50% 50% 55% 45% / 45% 50% 50% 55%}
-  40%{border-radius:38% 62% 65% 35% / 62% 40% 60% 38%}
-  60%{border-radius:62% 38% 42% 58% / 38% 58% 42% 62%}
-  80%{border-radius:45% 55% 58% 42% / 55% 42% 58% 45%}
-}
-@keyframes organicC{
-  0%,100%{border-radius:42% 58% 68% 32% / 34% 42% 58% 66%}
-  20%{border-radius:55% 45% 45% 55% / 50% 55% 45% 50%}
-  40%{border-radius:62% 38% 35% 65% / 58% 38% 62% 42%}
-  60%{border-radius:35% 65% 55% 45% / 42% 65% 35% 58%}
-  80%{border-radius:50% 50% 60% 40% / 60% 45% 55% 40%}
-}
-@keyframes organicD{
-  0%,100%{border-radius:58% 42% 32% 68% / 66% 58% 42% 34%}
-  20%{border-radius:45% 55% 55% 45% / 50% 45% 55% 50%}
-  40%{border-radius:35% 65% 62% 38% / 42% 62% 38% 58%}
-  60%{border-radius:65% 35% 40% 60% / 55% 35% 65% 45%}
-  80%{border-radius:50% 50% 50% 50% / 45% 55% 45% 55%}
-}
-@keyframes organicQuote{
-  0%,100%{border-radius:48% 52% 58% 42% / 38% 62% 38% 62%}
-  25%{border-radius:55% 45% 42% 58% / 52% 48% 52% 48%}
-  50%{border-radius:42% 58% 52% 48% / 62% 38% 62% 38%}
-  75%{border-radius:52% 48% 48% 52% / 45% 55% 45% 55%}
+/* === SHARED BREATHING (subtle for text cards) === */
+@keyframes softBreathe{
+  0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(100,180,255,0)}
+  50%{transform:scale(1.005);box-shadow:0 0 16px 1px rgba(100,180,255,.04)}
 }
 
-/* Heartbeat glow — shared by all organic elements */
-@keyframes heartGlow{
-  0%,100%{box-shadow:0 0 0 0 rgba(100,180,255,0)}
-  50%{box-shadow:0 0 20px 2px rgba(100,180,255,.06)}
+/* === DRAG TEAR SYSTEM (bento items) === */
+.bento-item.dragging{z-index:100;transition:none!important;animation:none!important}
+.tear-ghost{position:absolute;overflow:hidden;pointer-events:none;z-index:99;opacity:.7;transition:opacity .6s ease,transform .6s cubic-bezier(.25,.46,.45,.94);filter:blur(1px)}
+.tear-ghost.fade{opacity:0;transform:scale(.7) rotate(8deg)}
+.bento-item.snap-back{transition:transform .6s cubic-bezier(.25,.46,.45,.94)!important;animation:snapJiggle .6s ease!important}
+@keyframes snapJiggle{
+  0%{border-radius:50% 50% 50% 50% / 50% 50% 50% 50%}
+  30%{border-radius:35% 65% 60% 40% / 45% 35% 65% 55%}
+  60%{border-radius:55% 45% 40% 60% / 55% 60% 40% 45%}
+  100%{border-radius:28% 72% 68% 32% / 40% 32% 68% 60%}
 }
-.glass-card,.feat-card,.quote-box,.paper-box{animation-name:var(--org-anim,organicA);animation-duration:var(--org-dur,12s);animation-timing-function:ease-in-out;animation-iteration-count:infinite}
-
-/* Universal tap elastic — works on any .organic-tap target */
-@keyframes organicTap{
-  0%{transform:scale(1)}
-  12%{transform:scale(.93,.96)}
-  28%{transform:scale(1.04,1.02)}
-  42%{transform:scale(.98,.99)}
-  58%{transform:scale(1.015,1.01)}
-  75%{transform:scale(.995)}
-  100%{transform:scale(1)}
-}
-@keyframes organicTapRadius{
-  0%{border-radius:inherit}
-  15%{border-radius:52% 48% 38% 62% / 62% 52% 48% 38%}
-  30%{border-radius:38% 62% 55% 45% / 42% 38% 62% 58%}
-  50%{border-radius:58% 42% 48% 52% / 55% 62% 38% 45%}
-  70%{border-radius:45% 55% 62% 38% / 38% 45% 55% 62%}
-  100%{border-radius:inherit}
-}
-.organic-tapped{animation:organicTap .9s cubic-bezier(.36,.07,.19,.97),organicTapRadius .9s cubic-bezier(.36,.07,.19,.97)!important}
-
-/* Ripple for organic elements */
-.organic-ripple{position:absolute;border-radius:50%;pointer-events:none;z-index:2;transform:scale(0);background:radial-gradient(circle,rgba(255,255,255,.3) 0%,rgba(140,200,255,.15) 30%,transparent 65%)}
-@keyframes organicRipple{
-  0%{transform:scale(0);opacity:1}
-  30%{transform:scale(1.2);opacity:.7}
-  60%{transform:scale(2);opacity:.3}
-  100%{transform:scale(2.8);opacity:0}
-}
-.organic-tapped .organic-ripple{animation:organicRipple .9s cubic-bezier(.36,.07,.19,.97) forwards}
 
 /* === FEATURES (Year 2) === */
 .feature-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:16px}
 @media(min-width:640px){.feature-grid{grid-template-columns:repeat(2,1fr)}}
-.feat-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:36px 28px;transition:border-color .4s,transform .6s cubic-bezier(.25,.46,.45,.94),box-shadow .6s;position:relative;overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:38% 62% 55% 45% / 45% 38% 62% 55%}
-.feat-card:nth-child(2){border-radius:62% 38% 45% 55% / 55% 62% 38% 45%}
-.feat-card:nth-child(3){border-radius:45% 55% 38% 62% / 62% 45% 55% 38%}
-.feat-card:nth-child(4){border-radius:55% 45% 62% 38% / 38% 55% 45% 62%}
-.feat-card:nth-child(1){animation:organicA 11s ease-in-out infinite}
-.feat-card:nth-child(2){animation:organicB 13s ease-in-out infinite}
-.feat-card:nth-child(3){animation:organicC 12s ease-in-out infinite}
-.feat-card:nth-child(4){animation:organicD 14s ease-in-out infinite}
+.feat-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:36px 28px;transition:border-color .4s,transform .6s cubic-bezier(.25,.46,.45,.94),box-shadow .6s;position:relative;overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:var(--r-md);animation:softBreathe 9s ease-in-out infinite}
+.feat-card:nth-child(2){animation-delay:-2.5s}
+.feat-card:nth-child(3){animation-delay:-5s}
+.feat-card:nth-child(4){animation-delay:-7s}
 .feat-card:hover{border-color:rgba(255,255,255,.18);transform:scale(1.02);box-shadow:0 8px 40px rgba(100,180,255,.05)}
 .feat-num{font-size:.6875rem;font-weight:700;color:var(--g500);margin-bottom:18px}
 .feat-card h3{font-size:1.05rem;font-weight:700;margin-bottom:10px}
@@ -305,15 +240,12 @@ img{max-width:100%;display:block}
 .team-grid{display:grid;grid-template-columns:1fr;gap:20px}
 @media(min-width:640px){.team-grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1024px){.team-grid{grid-template-columns:repeat(3,1fr)}}
-.member{background:var(--wh);border:1px solid var(--g100);overflow:hidden;transition:border-color .4s,transform .6s cubic-bezier(.25,.46,.45,.94),box-shadow .6s;cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:42% 58% 52% 48% / 48% 42% 58% 52%}
-.member:nth-child(2){border-radius:58% 42% 48% 52% / 52% 58% 42% 48%}
-.member:nth-child(3){border-radius:48% 52% 42% 58% / 58% 48% 52% 42%}
-.member:nth-child(4){border-radius:52% 48% 58% 42% / 42% 52% 48% 58%}
-.member:nth-child(5){border-radius:45% 55% 55% 45% / 50% 45% 55% 50%}
-.member:nth-child(6){border-radius:55% 45% 45% 55% / 45% 55% 45% 55%}
-.member:nth-child(3n+1){animation:organicA 12s ease-in-out infinite}
-.member:nth-child(3n+2){animation:organicB 14s ease-in-out infinite}
-.member:nth-child(3n){animation:organicC 13s ease-in-out infinite}
+.member{background:var(--wh);border:1px solid var(--g100);overflow:hidden;transition:border-color .4s,transform .6s cubic-bezier(.25,.46,.45,.94),box-shadow .6s;cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:var(--r-lg);animation:softBreathe 10s ease-in-out infinite}
+.member:nth-child(2){animation-delay:-2s}
+.member:nth-child(3){animation-delay:-4s}
+.member:nth-child(4){animation-delay:-6s}
+.member:nth-child(5){animation-delay:-3s}
+.member:nth-child(6){animation-delay:-5s}
 .member:hover{border-color:var(--g300);transform:scale(1.02);box-shadow:0 16px 48px rgba(0,0,0,.08)}
 .member-pi{border-color:var(--dk)}
 .member-img{aspect-ratio:1/1;overflow:hidden;background:var(--g100)}
@@ -332,7 +264,7 @@ img{max-width:100%;display:block}
 .member-link:hover{background:var(--g100);border-color:var(--g300);color:var(--dk)}
 
 /* === PAPER === */
-.paper-box{background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.1);padding:48px;overflow:hidden;border-radius:52% 48% 45% 55% / 40% 55% 45% 60%;animation:organicQuote 16s ease-in-out infinite;transition:border-color .4s,transform .6s cubic-bezier(.25,.46,.45,.94),box-shadow .6s;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.paper-box{background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.1);padding:48px;overflow:hidden;border-radius:var(--r-lg);animation:softBreathe 12s ease-in-out infinite;transition:border-color .4s,transform .6s cubic-bezier(.25,.46,.45,.94),box-shadow .6s;cursor:pointer;-webkit-tap-highlight-color:transparent}
 @media(min-width:768px){.paper-box{padding:64px}}
 .paper-box:hover{border-color:rgba(255,255,255,.2);transform:scale(1.01);box-shadow:0 12px 48px rgba(100,180,255,.05)}
 .paper-pills{display:flex;gap:8px;margin-bottom:24px}
