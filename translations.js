@@ -1002,23 +1002,26 @@ function initLangSwitcher() {
     })(options[i]);
   }
 
-  // Toggle menu
+  function openMenuNear(anchor) {
+    var r = anchor.getBoundingClientRect();
+    menu.style.position = 'fixed';
+    menu.style.top = (r.bottom + 8) + 'px';
+    menu.style.right = (window.innerWidth - r.right) + 'px';
+    menu.style.left = 'auto';
+    menu.classList.toggle('open');
+  }
+
+  // Toggle menu (desktop)
   btn.addEventListener('click', function (e) {
     e.stopPropagation();
-    menu.classList.toggle('open');
+    openMenuNear(btn);
   });
 
   // Mobile button also toggles same menu
   if (mobileBtn) {
     mobileBtn.addEventListener('click', function (e) {
       e.stopPropagation();
-      // Position menu near mobile button
-      var r = mobileBtn.getBoundingClientRect();
-      menu.style.position = 'fixed';
-      menu.style.top = (r.bottom + 8) + 'px';
-      menu.style.right = (window.innerWidth - r.right) + 'px';
-      menu.style.left = 'auto';
-      menu.classList.toggle('open');
+      openMenuNear(mobileBtn);
     });
   }
 
