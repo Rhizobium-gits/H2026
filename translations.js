@@ -990,11 +990,14 @@
     try { localStorage.setItem('h-village-lang', lang); } catch (e) {}
   }
 
-  // Populate language menu from existing HTML elements
+  // Populate language menu — portal to body so it's never clipped
   function initLangSwitcher() {
     var btn = document.getElementById('langBtn');
-    var menu = document.getElementById('langMenu');
-    if (!btn || !menu) { console.warn('Lang switcher: btn or menu not found'); return; }
+    var menuEl = document.getElementById('langMenu');
+    if (!btn || !menuEl) { console.warn('Lang switcher: btn or menu not found'); return; }
+
+    // Move menu to body so no parent can clip it
+    document.body.appendChild(menuEl);
 
     var codes = Object.keys(langNames);
     for (var i = 0; i < codes.length; i++) {
@@ -1007,25 +1010,33 @@
         item.addEventListener('click', function (e) {
           e.stopPropagation();
           applyLang(code);
-          menu.classList.remove('open');
-          var opts = menu.querySelectorAll('.lang-option');
+          menuEl.classList.remove('open');
+          var opts = menuEl.querySelectorAll('.lang-option');
           for (var j = 0; j < opts.length; j++) {
             opts[j].classList.toggle('active', opts[j].getAttribute('data-lang') === code);
           }
         });
-        menu.appendChild(item);
+        menuEl.appendChild(item);
       })(codes[i]);
+    }
+
+    function positionMenu() {
+      var r = btn.getBoundingClientRect();
+      menuEl.style.top = (r.bottom + 8) + 'px';
+      menuEl.style.right = (window.innerWidth - r.right) + 'px';
+      menuEl.style.left = 'auto';
     }
 
     btn.addEventListener('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
-      menu.classList.toggle('open');
+      positionMenu();
+      menuEl.classList.toggle('open');
     });
 
     document.addEventListener('click', function (e) {
-      if (!menu.contains(e.target) && !btn.contains(e.target)) {
-        menu.classList.remove('open');
+      if (!menuEl.contains(e.target) && !btn.contains(e.target)) {
+        menuEl.classList.remove('open');
       }
     });
 
