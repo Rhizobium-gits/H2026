@@ -990,18 +990,11 @@
     try { localStorage.setItem('h-village-lang', lang); } catch (e) {}
   }
 
-  // Build & inject language switcher into existing #langSwitcher
+  // Populate language menu from existing HTML elements
   function initLangSwitcher() {
-    var wrapper = document.getElementById('langSwitcher');
-    if (!wrapper) return;
-
-    var btn = document.createElement('button');
-    btn.className = 'lang-btn';
-    btn.setAttribute('aria-label', 'Language');
-    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M1.5 8h13M8 1.5C9.5 3.5 10.5 5.5 10.5 8s-1 4.5-2.5 6.5C6.5 12.5 5.5 10.5 5.5 8S6.5 3.5 8 1.5z" stroke="currentColor" stroke-width="1.2"/></svg><span id="langLabel">\u65e5\u672c\u8a9e</span>';
-
-    var menu = document.createElement('div');
-    menu.className = 'lang-menu';
+    var btn = document.getElementById('langBtn');
+    var menu = document.getElementById('langMenu');
+    if (!btn || !menu) return;
 
     Object.keys(langNames).forEach(function (code) {
       var item = document.createElement('button');
@@ -1026,9 +1019,6 @@
     document.addEventListener('click', function () {
       menu.classList.remove('open');
     });
-
-    wrapper.appendChild(btn);
-    wrapper.appendChild(menu);
 
     // Restore saved language
     var saved;

@@ -31,15 +31,16 @@ img{max-width:100%;display:block}
 .nav-links a:hover{color:var(--wh);background:rgba(255,255,255,.06)}
 .nav-cta{background:var(--wh)!important;color:var(--bk)!important;font-weight:500!important;padding:8px 20px!important}
 .nav-cta:hover{opacity:.85}
-.nav-right{display:flex;align-items:center;gap:2px;flex-shrink:0}
-.nav-toggle{display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;width:40px;height:40px;flex-shrink:0;z-index:1001;position:relative;border-radius:50%;transition:background .3s ease}
-.nav-toggle:hover{background:rgba(255,255,255,.06)}
+.nav-right{display:flex;align-items:center;flex-shrink:0}
+.nav-toggle{display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;width:42px;height:42px;flex-shrink:0;z-index:1001;position:relative}
 @media(min-width:768px){.nav-toggle{display:none}}
-.nav-toggle span{display:block;height:1.5px;background:var(--wh);border-radius:2px;position:absolute;transition:all .6s cubic-bezier(.175,.885,.32,1.275)}
-.nav-toggle span:first-child{width:18px;transform:translateY(-4px)}
-.nav-toggle span:last-child{width:12px;transform:translateX(3px) translateY(4px)}
-.nav-toggle.active span:first-child{width:18px;transform:rotate(45deg)}
-.nav-toggle.active span:last-child{width:18px;transform:translateX(0) rotate(-45deg)}
+.nav-toggle span{display:block;height:1.5px;background:var(--wh);border-radius:4px;position:absolute;left:50%;transition:all .5s cubic-bezier(.77,0,.18,1)}
+.nav-toggle span:nth-child(1){width:20px;transform:translate(-50%,-6px)}
+.nav-toggle span:nth-child(2){width:14px;transform:translate(-30%,0)}
+.nav-toggle span:nth-child(3){width:8px;transform:translate(-10%,6px)}
+.nav-toggle.active span:nth-child(1){width:20px;transform:translate(-50%,0) rotate(45deg)}
+.nav-toggle.active span:nth-child(2){width:0;opacity:0;transform:translate(-50%,0)}
+.nav-toggle.active span:nth-child(3){width:20px;transform:translate(-50%,0) rotate(-45deg)}
 .nav-links.open{display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(8,8,8,.98);backdrop-filter:blur(48px);-webkit-backdrop-filter:blur(48px);align-items:center;justify-content:center;gap:32px;z-index:999;padding:0;margin:0;animation:menuIn .4s cubic-bezier(.77,0,.18,1) both}
 .nav-links.open a{font-size:1.5rem;letter-spacing:-.01em;color:var(--wh)!important;background:none!important;opacity:0;animation:itemIn .5s cubic-bezier(.77,0,.18,1) forwards}
 .nav-links.open li:nth-child(1) a{animation-delay:.06s}

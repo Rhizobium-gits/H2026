@@ -31,8 +31,15 @@
         <li><a href="https://osf.io/t3nbf_v1" class="nav-cta" target="_blank" rel="noopener" data-i18n="nav.paper">Paper</a></li>
       </ul>
       <div class="nav-right">
-        <div class="lang-switcher" id="langSwitcher"></div>
+        <div class="lang-switcher" id="langSwitcher">
+          <button class="lang-btn" id="langBtn" aria-label="Language">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M1.5 8h13M8 1.5C9.5 3.5 10.5 5.5 10.5 8s-1 4.5-2.5 6.5C6.5 12.5 5.5 10.5 5.5 8S6.5 3.5 8 1.5z" stroke="currentColor" stroke-width="1.2"/></svg>
+            <span id="langLabel">日本語</span>
+          </button>
+          <div class="lang-menu" id="langMenu"></div>
+        </div>
         <button class="nav-toggle" id="navToggle" aria-label="Menu">
+          <span></span>
           <span></span>
           <span></span>
         </button>
