@@ -29,10 +29,9 @@
         <li><a href="#year2" data-i18n="nav.year2">Year 2</a></li>
         <li><a href="#team" data-i18n="nav.team">Team</a></li>
         <li><a href="https://osf.io/t3nbf_v1" class="nav-cta" target="_blank" rel="noopener" data-i18n="nav.paper">Paper</a></li>
-        <li><button class="lang-btn" id="langBtn" type="button"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M1.5 8h13M8 1.5C9.5 3.5 10.5 5.5 10.5 8s-1 4.5-2.5 6.5C6.5 12.5 5.5 10.5 5.5 8S6.5 3.5 8 1.5z" stroke="currentColor" stroke-width="1.2"/></svg><span id="langLabel">日本語</span></button></li>
       </ul>
       <div class="nav-right">
-        <button class="lang-btn lang-btn-mobile" id="langBtnMobile" type="button"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M1.5 8h13M8 1.5C9.5 3.5 10.5 5.5 10.5 8s-1 4.5-2.5 6.5C6.5 12.5 5.5 10.5 5.5 8S6.5 3.5 8 1.5z" stroke="currentColor" stroke-width="1.2"/></svg></button>
+        <button class="lang-btn" id="langBtn" type="button"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M1.5 8h13M8 1.5C9.5 3.5 10.5 5.5 10.5 8s-1 4.5-2.5 6.5C6.5 12.5 5.5 10.5 5.5 8S6.5 3.5 8 1.5z" stroke="currentColor" stroke-width="1.2"/></svg><span id="langLabel">日本語</span></button>
         <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu">
           <span></span>
           <span></span>
@@ -424,7 +423,7 @@
   /* ===== Language Switcher ===== */
   (function () {
     var menu = document.getElementById('langMenu');
-    var btns = [document.getElementById('langBtn'), document.getElementById('langBtnMobile')];
+    var btns = [document.getElementById('langBtn')];
     if (!menu) return;
 
     function applyLang(lang) {
