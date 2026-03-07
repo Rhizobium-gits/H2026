@@ -42,15 +42,19 @@
   // ---- Mobile nav ----
   const toggle = document.getElementById('navToggle');
   const links = document.getElementById('navLinks');
+  const navEl = document.getElementById('nav');
   toggle.addEventListener('click', () => {
     toggle.classList.toggle('active');
     links.classList.toggle('open');
-    document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
+    const isOpen = links.classList.contains('open');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    navEl.classList.toggle('menu-open', isOpen);
   });
   links.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
     toggle.classList.remove('active');
     links.classList.remove('open');
     document.body.style.overflow = '';
+    navEl.classList.remove('menu-open');
   }));
 
   // ---- Smooth anchor scroll ----
