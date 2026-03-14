@@ -1,5 +1,5 @@
 // ============================================
-// H Village Research — Apple-Cinematic Script
+// H Village Research — Apple-Cinematic Interaction Script
 // ============================================
 (function () {
   'use strict';
