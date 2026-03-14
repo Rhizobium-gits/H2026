@@ -235,7 +235,7 @@ img{max-width:100%;display:block}
 .bento-item.cell-tapped{animation:cellBounce .8s cubic-bezier(.36,.07,.19,.97),cellJiggle .8s cubic-bezier(.36,.07,.19,.97)!important}
 .bento-item.cell-tapped .cell-ripple{animation:cellSplash .8s cubic-bezier(.36,.07,.19,.97) forwards}
 
-/* === SHARED BREATHING (subtle for text cards) === */
+/* === SHARED BREATHING ANIMATION (subtle wobble for text cards) === */
 @keyframes softBreathe{
   0%{transform:scale(1) translateY(0);border-radius:28px 40px 32px 44px;box-shadow:0 0 0 0 rgba(100,180,255,0)}
   14%{transform:scale(1.012,.99) translateY(-1px);border-radius:42px 28px 46px 30px;box-shadow:0 0 14px 2px rgba(100,180,255,.05)}
