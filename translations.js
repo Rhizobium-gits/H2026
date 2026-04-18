@@ -24,7 +24,7 @@ var translations = {
     'stat.4': 'メンバー',
     // About
     'about.tag': '01 \u2014 About',
-    'about.heading': '<span class="grad-text">建物</span>が文化を作る。',
+    'about.heading': '<span class="grad-text">建物</span>が文化をつくる。',
     'about.lead': 'H Village は男子寮・女子寮・共学寮（同一フロア型・フロア分離型）の<strong>4棟が共存する</strong>ユニークな学生寮です。',
     'about.p1': '同じキャンパスに通い、同じ大学に所属しながら、寮生たちは住む建物によって異なる態度や価値観を示します。私たちは「なぜそうなるのか」を科学的に解明するため、2025年度から縦断的な調査研究を開始しました。',
     'about.p2': '初年度は153名のデータから、回答パターンの違いが性別ではなく<strong>建物という社会単位</strong>に紐づくことを発見。2026年度はメンバーを8人に拡大し、建物文化の形成メカニズムに迫ります。',
