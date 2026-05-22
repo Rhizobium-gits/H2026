@@ -343,3 +343,11 @@ img{max-width:100%;display:block}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--g600);border-radius:2px}
 ::-webkit-scrollbar-thumb:hover{background:var(--g400)}
+
+/* === Hide non-human media (videos + non-portrait images) === */
+/* 🐱 hides hero YouTube video, aerial photos, 3D map, and campus images */
+#heroVideo{display:none}
+#about .col-img{display:none}
+.full-img,#fullImg1,#fullImg2{display:none}
+.findings-hero{display:none}
+@media(min-width:768px){#about .two-col{grid-template-columns:1fr}}
