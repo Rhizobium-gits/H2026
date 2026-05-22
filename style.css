@@ -345,6 +345,5 @@ img{max-width:100%;display:block}
 ::-webkit-scrollbar-thumb:hover{background:var(--g400)}
 
 /* === Hide remaining non-portrait media === */
-/* 🐱 hero YouTube video and SFC campus aerial (no replacement image) */
-#heroVideo{display:none}
+/* 🐱 SFC campus aerial (no replacement image) */
 #fullImg1{display:none}
